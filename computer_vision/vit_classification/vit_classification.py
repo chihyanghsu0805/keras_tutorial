@@ -71,7 +71,7 @@ def main(args):
     history = run_experiment(
         vit_classifier, learning_rate, weight_decay,
         x_train, y_train, batch_size, num_epochs,
-        x_test, y_test
+        x_test, y_test, args.output_dir
     )
 
 def create_vit_classifier(
@@ -106,8 +106,7 @@ def create_vit_classifier(
 
 def run_experiment(
         model, learning_rate, weight_decay, x_train, y_train,
-        batch_size, num_epochs, x_test, y_test
-    
+        batch_size, num_epochs, x_test, y_test, output_dir    
     ):
         optimizer = tfa.optimizers.AdamW(
             learning_rate=learning_rate, weight_decay=weight_decay
@@ -122,7 +121,7 @@ def run_experiment(
             ],
         )
 
-        checkpoint_filepath = "./tmp/checkpoint"
+        checkpoint_filepath = os.path.join(output_dir, "tmp/checkpoint")
         checkpoint_callback = keras.callbacks.ModelCheckpoint(
             checkpoint_filepath,
             monitor="val_accuracy",
