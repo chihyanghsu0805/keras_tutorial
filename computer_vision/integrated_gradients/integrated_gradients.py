@@ -64,14 +64,14 @@ def get_img_array(img_path, size=(299, 299)):
     return array
 
 def get_gradients(img_input, top_pred_idx, model):
-    images = tf.cat(img_input, tf.float32)
+    images = tf.cast(img_input, tf.float32)
 
     with tf.GradientTape() as tape:
         tape.watch(images)
         preds = model(images)
         top_class = preds[:, top_pred_idx]
 
-    grads = tape.geadient(top_class, images)
+    grads = tape.gradient(top_class, images)
     return grads
 
 def get_integrated_gradients(model, img_size, img_input, top_pred_idx, baseline=None, num_steps=50):
@@ -92,7 +92,7 @@ def get_integrated_gradients(model, img_size, img_input, top_pred_idx, baseline=
         grad = get_gradients(img, top_pred_idx, model)
         grads.append(grad[0])
 
-    grads = tf.convert_to_tensors(grads, dtype=tf.float32)
+    grads = tf.convert_to_tensor(grads, dtype=tf.float32)
     grads = (grads[:-1] + grads[1:]) / 2.0
     avg_grads = tf.reduce_mean(grads, axis=0)
     integrated_grads = (img_input - baseline) * avg_grads
@@ -108,7 +108,7 @@ def random_baseline_integrated_gradients(model, img_size, img_input, top_pred_id
             img_input=img_input,
             top_pred_idx=top_pred_idx,
             baseline=baseline,
-            num_seps=num_steps,
+            num_steps=num_steps,
         )
         integrated_grads.append(igrads)
 
@@ -309,6 +309,7 @@ class GradVisualizer:
         image,
         gradients,
         integrated_gradients,
+        output_file,
         polarity="positive",
         clip_above_percentile=99.9,
         clip_below_percentile=0,
@@ -317,7 +318,7 @@ class GradVisualizer:
         outlines=False,
         outlines_component_percentage=90,
         overlay=True,
-        figsize=(15, 8),
+        figsize=(15, 8),        
     ):
         # 1. Make two copies of the original image
         img1 = np.copy(image)
@@ -351,7 +352,7 @@ class GradVisualizer:
             overlay=overlay,
         )
 
-        _, ax = plt.subplots(1, 3, figsize=figsize)
+        fig, ax = plt.subplots(1, 3, figsize=figsize)
         ax[0].imshow(image)
         ax[1].imshow(grads_attr.astype(np.uint8))
         ax[2].imshow(igrads_attr.astype(np.uint8))
@@ -359,7 +360,8 @@ class GradVisualizer:
         ax[0].set_title("Input")
         ax[1].set_title("Normal gradients")
         ax[2].set_title("Integrated gradients")
-        plt.show()
+        #plt.show()
+        fig.savefig(output_file)
 
 
 if __name__ == "__main__":
