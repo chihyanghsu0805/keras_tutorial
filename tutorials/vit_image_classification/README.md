@@ -4,6 +4,7 @@
 This tutorial trains a Vision Transformer to classify the CIFAR dataset.
 
 The original paper is https://arxiv.org/pdf/2010.11929.pdf.
+The orginal code is https://github.com/google-research/vision_transformer.
 
 Vision Transformers work as follows:
 1. Extract patches from the original image and flatten them.
