@@ -1,7 +1,5 @@
 # Machine Learning
 
-## Papers
-
 ## Tutorials
 - Image classification with Vision Transformer
 - Model interpretability with Integrated Gradients
