@@ -307,6 +307,7 @@ class Patches(layers.Layer):
             padding="VALID",
         )
         patch_dims = patches.shape[-1]
+        # Flatten patches
         patches = tf.reshape(patches, [batch_size, -1, patch_dims])
         return patches
 
@@ -323,7 +324,10 @@ class PatchEncoder(layers.Layer):
         """
         super(PatchEncoder, self).__init__()
         self.num_patches = num_patches
+        # Trainable Linear Projection, (Eq.1)
         self.projection = layers.Dense(units=projection_dim)
+
+        # Position Embeddings
         self.position_embedding = layers.Embedding(
             input_dim=num_patches, output_dim=projection_dim
         )
