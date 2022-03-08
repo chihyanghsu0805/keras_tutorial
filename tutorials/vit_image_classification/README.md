@@ -1,5 +1,5 @@
 # Image Classification with Vision Transformer
-This code follows the tutorial on # https://keras.io/examples/vision/image_classification_with_vision_transformer.
+This code follows the tutorial on https://keras.io/examples/vision/image_classification_with_vision_transformer.
 
 ## Overview
 This tutorial trains a Vision Transformer to classify the CIFAR dataset.
