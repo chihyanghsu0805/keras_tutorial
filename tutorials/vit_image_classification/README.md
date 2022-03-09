@@ -37,7 +37,8 @@ def create_vit_classifier():
 ```
 class PatchEncoder(layers.Layer):
 ```
-5. The Transformer encoder consists of alternating layers of multiheaded self-attention and MLP blocks (Eq. 2, 3). Layernorm (LN) is applied before every block, and residual connections after every block.
+6. The Transformer encoder consists of alternating layers of multiheaded self-attention (MSA) and MLP blocks (Eq. 2, 3). Layernorm (LN) is applied before every block, and residual connections after every block.
+-   See https://jalammar.github.io/illustrated-transformer/ for details in MSA.
 ```
 def create_vit_classifier():
 ```
