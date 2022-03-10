@@ -111,12 +111,11 @@ class StyleContentModel(tf.keras.models.Model):
         """Call class.
 
         Args:
-            inputs (tf.Tensor): input tensor.
+            inputs (tf.Tensor): input tensor, Expects float input in [0,1].
 
         Returns:
             Dict: dict with content/style layers mapped with corresponding outputs.
         """
-        "Expects float input in [0,1]"
         inputs = inputs * 255.0
         preprocessed_input = tf.keras.applications.vgg19.preprocess_input(inputs)
         outputs = self.vgg(preprocessed_input)
@@ -220,13 +219,13 @@ def train_step(
     """Run one training step.
 
     Args:
-        extractor (tf.keras.Model): _description_
-        image (tf.Tensor): _description_
-        style_targets (List): _description_
-        style_weight (float): _description_
-        content_targets (List): _description_
-        content_weight (float): _description_
-        opt (tf.optimizer): _description_
+        extractor (tf.keras.Model): model to extract features from.
+        image (tf.Tensor): input image.
+        style_targets (List): layers to extract style from.
+        style_weight (float): weights of style to loss.
+        content_targets (List): layers to extract content from.
+        content_weight (float): weights of content to loss.
+        opt (tf.optimizer): model optimizer.
     """
     with tf.GradientTape() as tape:
         outputs = extractor(image)
@@ -253,14 +252,14 @@ def train_step_weighted(
     """Ron one training step.
 
     Args:
-        extractor (tf.keras.Model): _description_
-        image (tf.Tensor): _description_
-        style_targets (List): _description_
-        style_weight (float): _description_
-        content_targets (List): _description_
-        content_weight (float): _description_
-        opt (tf.optimizers): _description_
-        total_variation_weight (float): _description_
+        extractor (tf.keras.Model): model to extract features from.
+        image (tf.Tensor): input image.
+        style_targets (List): layers to extract style from.
+        style_weight (float): weights of style to loss.
+        content_targets (List): layers to extract content from.
+        content_weight (float): weights of content to loss.
+        opt (tf.optimizers): model optimizer.
+        total_variation_weight (float): variation weight.
     """
     with tf.GradientTape() as tape:
         outputs = extractor(image)
@@ -311,7 +310,6 @@ def main(args: argparse.Namespace) -> None:
         "https://tfhub.dev/google/magenta/arbitrary-image-stylization-v1-256/2"
     )
     stylized_image = hub_model(tf.constant(content_image), tf.constant(style_image))[0]
-    # img = tensor_to_image(stylized_image)
     fig = plt.figure()
     imshow(stylized_image, "Stylized Image")
     output_file = os.path.join(args.image_dir, "stylized_image.jpeg")
@@ -420,7 +418,7 @@ def main(args: argparse.Namespace) -> None:
     )
 
     fig = plt.figure()
-    imshow(stylized_image, "Test Image")
+    imshow(image, "Test Image")
     output_file = os.path.join(args.image_dir, "test_image.jpeg")
     fig.savefig(output_file)
 
@@ -432,7 +430,7 @@ def main(args: argparse.Namespace) -> None:
 
     step = 0
     fig = plt.figure()
-    for n in range(epochs):
+    for _ in range(epochs):
         for _ in range(steps_per_epoch):
             step += 1
             train_step(
@@ -501,7 +499,7 @@ def main(args: argparse.Namespace) -> None:
 
     step = 0
     fig = plt.figure()
-    for n in range(epochs):
+    for _ in range(epochs):
         for _ in range(steps_per_epoch):
             step += 1
             train_step_weighted(
