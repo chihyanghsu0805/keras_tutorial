@@ -8,7 +8,7 @@ The original code is here, https://www.tensorflow.org/tutorials/generative/style
 
 ## Feature Extraction
 
-1. Load acontenst and style image.
+1. Load content and style image.
 ![Alt text](./images/content_image.jpeg)
 ![Alt text](./images/style_image.jpeg)
 
