@@ -249,7 +249,7 @@ def train_step_weighted(
     opt: tf.optimizers,
     total_variation_weight: float,
 ):
-    """Ron one training step.
+    """Run one training step.
 
     Args:
         extractor (tf.keras.Model): model to extract features from.
