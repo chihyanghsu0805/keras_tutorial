@@ -1,3 +1,4 @@
+# This folder contains papers in deep learning, related works are grouped in idividual folders.
 ICLR:
 - 2022:
     - Natural Language Descriptions of Deep Visual Features
@@ -8,7 +9,7 @@ ICLR:
         - https://arxiv.org/pdf/2010.11929
         - https://github.com/google-research/vision_transformer
 
-CogSci
+CogSci:
 - 2021:
     - Are Convolutional Neural Networks or Transformers more like human vision?
         - https://arxiv.org/abs/2105.07197
@@ -46,10 +47,10 @@ CVPR:
         - https://arxiv.org/abs/2004.09484
         - https://github.com/microsoft/Bringing-Old-Photos-Back-to-Life
 
-PMLR:
-- 2017:
-    - Axiomatic Attribution for Deep Networks
-        - https://arxiv.org/abs/1703.01365
+- 2016:
+    - Learning Deep Features for Discriminative Localization
+        - https://openaccess.thecvf.com/content_cvpr_2016/papers/Zhou_Learning_Deep_Features_CVPR_2016_paper.pdf
+        - https://github.com/zhoubolei/CAM
 
 Google AI Blog:
 - Accurate Alpha Matting for Portrait Mode Selfies on Pixel 6
