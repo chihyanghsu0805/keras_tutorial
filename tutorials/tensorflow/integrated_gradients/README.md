@@ -16,18 +16,23 @@ Given an input image and its classification, a baseline image (uniform intensity
 The integral or gradients is approximated using the trapezoidal rule / Riemann sum.
 
 Original Image:
+
 ![Alt text](./images/original.jpg)
 
 Classifications:
+
 ![Alt text](./images/prediction.jpg)
 
 Baseline Image:
+
 ![Alt text](./images/baseline.jpg)
 
 Interpolated Image:
+
 ![Alt text](./images/interpolate.jpg)
 
 Attributions:
+
 ![Alt text](./images/fireboat.jpg)
 ![Alt text](./images/panda.jpg)
 
