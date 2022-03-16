@@ -392,7 +392,7 @@ def main(args: argparse.Namespace) -> None:
         m_steps=55,
     )
 
-    _ = plot_img_attributions(
+    f = plot_img_attributions(
         baseline=baseline,
         image=img_name_tensors["Giant Panda"],
         attributions=attributions,
