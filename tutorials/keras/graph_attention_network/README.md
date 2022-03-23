@@ -14,8 +14,12 @@ e is the attention coefficient, i and j are respective nodes, W is linear transf
 In the paper, masked attentions were applied with j being first order neighbors of i (including i).
 
 ![Alt text](./images/softmax.png)
+![Alt text](./images/leaky.png)
+Attention coefficients are softmaxed for easy comparison. in the paper leaky relu is used for activation, || is concatenation.
+
+![Alt text](./images/output.png)
+![Alt text](./images/concat.png)
+![Alt text](./images/average.png)
 
 
-![Alt text](./images/softmax.png)
-attention coefficients are softmaxed for easy comparison.
 
