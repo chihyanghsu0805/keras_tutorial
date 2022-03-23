@@ -9,6 +9,11 @@ ICLR:
         - https://arxiv.org/pdf/2010.11929
         - https://github.com/google-research/vision_transformer
 
+- 2018:
+    - Graph Attention Networks
+        - https://arxiv.org/abs/1710.10903
+        - https://github.com/PetarV-/GAT
+        -
 CogSci:
 - 2021:
     - Are Convolutional Neural Networks or Transformers more like human vision?
