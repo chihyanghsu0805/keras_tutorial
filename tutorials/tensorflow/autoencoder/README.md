@@ -3,11 +3,15 @@ This code follows the tutorial on https://keras.io/examples/graph/gat_node_class
 
 # Overview
 Autoencoders consist of two components, encoder and decoder.
+
 The encoder decreases in size but increases in filters.
+
 The bottleneck layer is the lowest layer and can be used as embeddings/ latent dimensions.
+
 The decoder increases in size and decrease in filters.
 
 Autoencoders can be used in various applications.
+
 In this notebook, three applications were demonstrated.
 
 1. Data Reconstruction/Compression
