@@ -1,5 +1,5 @@
 # Autoencdoers
-This code follows the tutorial on https://keras.io/examples/graph/gat_node_classification/.
+This code follows the tutorial on https://www.tensorflow.org/tutorials/generative/autoencoder.
 
 # Overview
 Autoencoders consist of two components, encoder and decoder.
