@@ -1,4 +1,4 @@
-# Autoencdoers
+# Autoencoders
 This code follows the tutorial on https://www.tensorflow.org/tutorials/generative/autoencoder.
 
 # Overview
