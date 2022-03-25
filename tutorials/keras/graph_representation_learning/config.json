@@ -1,0 +1,13 @@
+{
+  "embeddings": [
+    {
+      "tensorName": "My tensor",
+      "tensorShape": [
+        1000,
+        50
+      ],
+      "tensorPath": "https://github.com/chihyanghsu0805/machine_learning/blob/tutorials/tutorials/keras/graph_representation_learning/embeddings.tsv",
+      "metadataPath": "https://github.com/chihyanghsu0805/machine_learning/blob/tutorials/tutorials/keras/graph_representation_learning/metadata.tsv"
+    }
+  ]
+}
