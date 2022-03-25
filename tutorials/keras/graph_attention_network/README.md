@@ -1,9 +1,26 @@
-# Graph Representation Learning with node2vec
-This code follows the tutorial on https://keras.io/examples/graph/node2vec_movielens/.
+# Graph Attention Network (GAT) for Node Classification
+This code follows the tutorial on https://keras.io/examples/graph/gat_node_classification/.
+
+The original paper is https://arxiv.org/abs/1710.10903.
 
 ## Overview
-This code takes movie ratngs and build a weighted graph between the movies.
+Graph neural network finds relationships between nodes in a graph.
 
-Positive and negative samples are determined by biased random walk of the graph.
+Graph attention network utilizes self attention layers to address shortcomings in graph convolutional network.
 
-Embeddings are learnt from training a classifier with positive and negative examples.
+## Graph attention network
+![Alt text](./images/figure.png)
+
+![Alt text](./images/attention.png)
+
+e is the attention coefficient, i and j are respective nodes, W is linear transformation, and h is node features.
+In the paper, masked attentions were applied with j being first order neighbors of i (including i).
+
+![Alt text](./images/softmax.png)
+![Alt text](./images/leaky.png)
+
+Attention coefficients are softmaxed for easy comparison. in the paper leaky relu is used for activation, || is concatenation.
+
+![Alt text](./images/output.png)
+![Alt text](./images/concat.png)
+![Alt text](./images/average.png)
