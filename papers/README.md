@@ -1,4 +1,5 @@
-# This folder contains papers in deep learning, related works are grouped in idividual folders.
+# This folder contains papers in deep learning.
+# Related works are grouped in individual folders.
 ICLR:
 - 2022:
     - Natural Language Descriptions of Deep Visual Features
