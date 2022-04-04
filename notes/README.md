@@ -154,30 +154,41 @@ Besides regularization, other techniques can help detect and reduce overfitting.
 
 ### Metrics
 
--   Accuracy
--   Precision
--   Recall
--   Receiver Operating Characteristic (ROC) Curve
--   Area Under the Curve (AUC)
--   Calibration Plot
--   Bucketed Bias
+Metrics are used to compare model performance. It is important to choose a metric that truly represents the objective of the model. Choose a single metric to evaluate but others can also be collected. For classification problems, it is typical to use `accuracy: (TP + TN) / (TP + FP + TN + FN)`. For class imbalanced problems, `precision: TP / (TP + FP)` and `recall: TP / (TP + FN)` may be more informative. Increasing the threshold leads to less False Positives and result in higher precision, while decreasing the threshold leads to less False Negatives with higher Recall. `F1 / Dice Score: 2 x P x R / (P + R)` is the harmonic mean of precision and recall. It is also commonly used in image segmentation along with `Hausdorff Distance`. `Jaccard Index / Intersection over Union (IoU)` is used for object detection and categorical features.
+
+Besides single value metrics, `Receiver Operating Characteristic (ROC) Curve` assess model performance at different threshold values and `Area Under the Curve (AUC)` quantifies the curve. `Calibration Plot` visualizes the performance with different labels to detect `Bucketed Bias`.
 
 ## Model
--   Discriminative
-    -   Linear Regression (Exponential family)
-    -   Locally Weighted Linear Regression (Non-Parametric)
-    -   Logistic Regression (Exponential family)
-    -   Softmax Regression
-    -   Generalized Linear Models (Exponential family)
-    -   Support Vector Machines (SVM)
-    -   Neural Networks (NN)
-    -   Decision Trees
-    -   Ensembles
-        -   Boosting: Adaptive Boosting (AdaBoost), Gradient Boosting Machines (GBM), Extreme Gradient Boosting (XGBoost)
-        -   Bagging: Random Forest (RF)
 
-    -   K Nearest Neighbors (Non-Parametric)
-    -   K Means (Clustering, Non-Parametric)
+In supervised learning, models use `parameters` $\theta$ and the `examples` x to form the `hypothesis` and make `predictions` $\hat{y}$ and compare with the `labels` y. The `Loss` function quantifies the difference between $\hat{y}$ and y to provide updates to $\theta$ to minimize the difference. The `Cost` function is the loss function for the entire train set. Optimal parameters $\theta$* an be found by `iterative` methods such as `Gradient Descent` that utilizes the differences between  y and $\hat{Y}$ to update $\theta$.
+
+Models can be categorized into `Discriminative` and `Generative` based on their assumptions. Additionally, `parametric` models refer to models with fixed set of parameters while `non-parametric` models have number of parameters that grows with data size.
+
+Examples X are often represented in `design matrix` with rows being examples (m) and columns as features (n). Parameters $\theta$ represents the weight for each feature. Predictions are therfore $\hat{Y}$ = X $\theta$. Equations below uses single example for clarity.
+
+### Discriminative Models
+
+Discriminative models find the conditional probability of y given x parameterized by $\theta$, P(y | x; $\theta$).
+
+-   `Linear Regression` (Exponential family) follows the form $\hat{y}$ = $\theta$<sup>T</sup>x with x<sub>0</sub> being 1 and $\theta$<sub>0</sub> being the bias term. It commonly uses `Minimum Squared Error` (MSE) as the Loss term, (y - $\hat{y}$)<sup>2</sup> which can be derived from `Maximum Likelihood Estimation (MLE)` with `Gaussian` distribution. Besides iterative methods, Linear Regression can also be solved using analytical methods such as  Normal equation to find $\theta$* in one step with $\theta$* = (X<sup>T</sup>X)<sup>-1</sup>X<sup>T</sup>y, given that (X<sup>T</sup>X) is invertible. Note that matrix inverses are expensive operation and prone to numerical errors.
+
+-   `Locally Weighted Linear Regression` (Non-Parametric) weighs the individual loss by non-negative function w(i) based on their distance to the point of prediction.
+
+-   `Logistic Regression` (Exponential family) can be used to predict probabilities and is often used for `binary classification` with probability threshold. It follows the form $\hat{y}$ = $\sigma$ (z) with $\sigma$ as the `sigmoid/logistic` function, $\sigma$ (z) = 1/(1+e<sup>-z</sup>) and z = $\theta$<sup>T</sup>x. The probability resembles the `Bernoulli` distribution, P(y = x; $\theta$) = $\hat{y}$ <sup>y</sup> (1 - $\hat{y}$) <sup> (1-y) </sup>. `Regularization` is `extremely important` for Logistic Regression as the sigmoid function reaches asymptotic when z approaches +/- infinity. Without regularization, the parameters may explode and/or vanish. The loss function is the $\prod$ P(y = x; $\theta$) and is usually applied by a logarithmic to become `log likelihood` which becomes $\sum$ of all examples P(y = x; $\theta$) = y log($\hat{y}$) + (1-y) log((1 - $\hat{y}$)). This loss is also know as `cross entropy loss (XEnt)`. `Maximum Likelihood Estimation` maximizes the log likelihood with gradient ascent, but is usually transformed to `minimizing negative log likelihood` with `gradient descent`.
+
+-   `Softmax Regression` is logistic regression with `multi-class` classification. The logits (z, $\theta$<sup>T</sup>x) are exponentialized and normalized so the probabilities sums to 1, (e<sup>$\theta$<sub>i</sub><sup>T</sup>x</sup> / $\sum_j$ e<sup>$\theta$<sub>j</sub><sup>T</sup>x</sup>). The loss function become `categorical cross entropy`. For problems with `multi-class single instance`, softmax is used and `multi-class multi-instance`, logistic regression is used for each instance.
+
+-   Generalized Linear Models (Exponential family)
+
+-   Support Vector Machines (SVM)
+-   Neural Networks (NN)
+-   Decision Trees
+-   Ensembles
+    -   Boosting: Adaptive Boosting (AdaBoost), Gradient Boosting Machines (GBM), Extreme Gradient Boosting (XGBoost)
+    -   Bagging: Random Forest (RF)
+
+-   K Nearest Neighbors (Non-Parametric)
+-   K Means (Clustering, Non-Parametric)
 
 -   Generative
     -   Gaussian Discriminant Analysis
@@ -186,6 +197,8 @@ Besides regularization, other techniques can help detect and reduce overfitting.
 -   Estimators:
     -   Maximimum Likelihood Estimation (MLE, frequentist):
     -   Maximum A Posteriori (MAP, bayesian):
+
+Depending on the update scheme,
 
 -   Optimizers:
 
