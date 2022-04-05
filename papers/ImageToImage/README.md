@@ -1,6 +1,5 @@
 # This folder contains Image-To-Image related papers.
 
-## Image-to-Image Translation
 -   Image-to-Image Translation with Conditional Adversarial Networks
     -   2017 CVPR
     -   https://arxiv.org/abs/1611.07004
