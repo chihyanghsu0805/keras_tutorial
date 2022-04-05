@@ -52,7 +52,7 @@ To build a good solution to a ML problem, it is important to understand the data
         -   `Sparse` representation can be used instead of dense representations
         -   They can also be represented as `embeddings` with continuous values
 
-    -   Feature Crosses
+    -   `Feature Crosses`
 
         Feature crosses are used to introduce `non-linear` relationships between features to engineer new features.
 
@@ -160,11 +160,17 @@ Besides single value metrics, `Receiver Operating Characteristic (ROC) Curve` as
 
 ## Model
 
-In supervised learning, models use `parameters` θ and the `examples` x to form the `hypothesis` and make `predictions` h<sub>θ</sub>(x) and compare with the `labels` y. The `Loss` function quantifies the difference between h<sub>θ</sub>(x) and y to provide updates to θ to minimize the difference. The `Cost` function is the loss function for the entire train set. Optimal parameters θ* an be found by `iterative` methods such as `Gradient Descent` that utilizes the differences between  y and h<sub>θ</sub>(x) to update θ.
+In supervised learning, models use `parameters` θ and the `examples` x to form the `hypothesis` and make `predictions` h<sub>θ</sub>(x) and compare with the `labels` y. Examples X are often represented in `design matrix` with rows being examples (m) and columns as features (n). Parameters θ represents the weight for each feature. Predictions are therfore h<sub>θ</sub>(x) = X θ. Equations below uses single example for clarity.
 
-Models can be categorized into `Discriminative` and `Generative` based on their assumptions. Additionally, `parametric` models refer to models with fixed set of parameters while `non-parametric` models have number of parameters that grows with data size.
+A ML model consists of `model`, `loss`, `optimizer`, `hyperparameters`.
 
-Examples X are often represented in `design matrix` with rows being examples (m) and columns as features (n). Parameters θ represents the weight for each feature. Predictions are therfore h<sub>θ</sub>(x) = X θ. Equations below uses single example for clarity.
+-   `Models` can be categorized into `Discriminative` and `Generative` based on their assumptions. Additionally, `parametric` models refer to models with fixed set of parameters while `non-parametric` models have number of parameters that grows with data size.
+
+-   The `Loss` function quantifies the difference between h<sub>θ</sub>(x) and y to provide updates to θ to minimize the difference. The `Cost` function is the loss function for the entire train set. Loss functions can usually be derived from `Maximimum Likelihood Estimation (MLE)` in frequentist statistics and / or `Maximum A Posteriori (MAP)` in bayesian statistics.
+
+-   Optimal parameters θ* an be found by `iterative` methods such as `Gradient Descent` that utilizes the differences between y and h<sub>θ</sub>(x) to update θ. `Parameter Initialization` is key to convergence of the optimization problem. For example, non-convex problems in `Neural Networks` strongly depends on the initialization and often prefers `random sampling from a uniform distribution of small numbers`, where random breaks symmetry and small prevents exploding gradients. On the other hand, `MLE in exponential family is always concave` with respect to η (convex with negative log likelihood) and any initialization would converge.
+
+-   `Hyperparameters` are settings defined by users and not learned. The most important hyperparamete is `learning rate` which directly controls the parameter update rate.
 
 ### Discriminative Models
 
@@ -174,13 +180,26 @@ Discriminative models find the conditional probability of y given x parameterize
 
 -   `Locally Weighted Linear Regression` (Non-Parametric) weighs the individual loss by non-negative function w(i) based on their distance to the point of prediction.
 
--   `Logistic Regression` (Exponential family) can be used to predict probabilities and is often used for `binary classification` with probability threshold. It follows the form h<sub>θ</sub>(x) = σ(z) with σ as the `sigmoid/logistic` function, σ (z) = 1/(1+e<sup>-z</sup>) and z = θ<sup>T</sup>x. The probability resembles the `Bernoulli` distribution, P(y = x; θ) = h<sub>θ</sub>(x) <sup>y</sup> (1 - h<sub>θ</sub>(x)) <sup> (1-y) </sup>. `Regularization` is `extremely important` for Logistic Regression as the sigmoid function reaches asymptotic when z approaches +/- infinity. Without regularization, the parameters may explode and/or vanish. The loss function is the product of all examples P(y = x; θ) and is usually applied by a logarithmic to become `log likelihood` which becomes sum of all examples P(y = x; θ) = y log(h<sub>θ</sub>(x)) + (1-y) log((1 - h<sub>θ</sub>(x))). This loss is also know as `cross entropy loss (XEnt)`. `Maximum Likelihood Estimation` maximizes the log likelihood with gradient ascent, but is usually transformed to `minimizing negative log likelihood` with `gradient descent`.
+-   `Logistic Regression` (Exponential family) can be used to predict probabilities and is often used for `binary classification` with probability threshold. It follows the form h<sub>θ</sub>(x) = σ(z) with σ as the `sigmoid/logistic` function, σ (z) = 1/(1+e<sup>-z</sup>) and z = θ<sup>T</sup>x. The probability resembles the `Bernoulli` distribution, P(y = x; θ) = h<sub>θ</sub>(x) <sup>y</sup> (1 - h<sub>θ</sub>(x)) <sup> (1-y) </sup>. `Regularization` is `extremely important` for Logistic Regression as the sigmoid function reaches asymptotic when z approaches +/- infinity. Without regularization, the parameters may explode and/or vanish. The loss function is the product of all examples Π P(y = x; θ) and is usually applied by a logarithmic to become `log likelihood` which becomes sum of all examples, Σ P(y = x; θ) = 	Σ y log(h<sub>θ</sub>(x)) + (1-y) log((1 - h<sub>θ</sub>(x))). This loss is also know as `cross entropy loss (XEnt)`. `Maximum Likelihood Estimation` maximizes the log likelihood with gradient ascent, but is usually transformed to `minimizing negative log likelihood` with `gradient descent`.
 
--   `Softmax Regression` is logistic regression with `multi-class` classification. The logits (z, θ<sup>T</sup>x) are exponentialized and normalized so the probabilities sums to 1, (e<sup>θ<sub>i</sub><sup>T</sup>x</sup> / sum e<sup>θ<sub>j</sub><sup>T</sup>x</sup>). The loss function become `categorical cross entropy`. For problems with `multi-class single instance`, softmax is used and `multi-class multi-instance`, logistic regression is used for each instance.
+-   `Softmax Regression` is logistic regression with `multi-class` classification. The logits (z, θ<sup>T</sup>x) are exponentialized and normalized so the probabilities sums to 1, (e<sup>θ<sub>i</sub><sup>T</sup>x</sup> / 	Σ<sub>j</sub> e<sup>θ<sub>j</sub><sup>T</sup>x</sup>). The loss function become `categorical cross entropy`. For problems with `multi-class single instance`, softmax is used and `multi-class multi-instance`, logistic regression is used for each instance.
 
--   Generalized Linear Models (Exponential family)
+-   `Exponential Family` is a family of models that can be factored into P(y; η) = b(y) exp(η<sup>T</sup>T(y)-α(η)), where α is log partition. Examples are `Gaussian`, `Bernoulli`, Poisson, Gamma, Exponential, Beta, Dirichlet. `Generalized Linear Models (GLMs)` are a set of models that follows the properties:
+    -   y | x; θ ~ Exponential Family
+    -   η = θ<sup>T</sup>x  (linear)
+    -   At train time, maximizes log P(y; η). At test time, outputs E[y; η] = h<sub>θ</sub>(x).
+    -   Learning update rule: θ<sub>j</sub> = θ<sub>j</sub> + α (y<sup>i</sup> - h<sub>θ</sub>(x<sup>i</sup>)) x<sup>i</sup><sub>j</sub>, where α is learning rate.
 
--   Support Vector Machines (SVM)
+Linear models are very efficient but sometimes lack the capacity to model difficult problems. `Non-linearity` can be introduced into linear models by `feature crosses` but may be prohibitively cumbersome. Support Vector Machines and Neural Networks add non-linearity by using kernels and activation functions.
+
+-   `Support Vector Machines (SVMs)`: SVMs are `optimal margin classifiers` with `kernel tricks`.
+
+    -   Optimal Margin Classifiers: For binary classification problems, the labels y become [-1, 1] and θ is represented by w and b. The hypothesis becomes h<sub>w,b</sub>(x) = g(w<sup>T</sup>x+b). The `Functional Margin` (FM) is defined as Γ<sup>i</sup><sub>FM</sub> = y<sup>i</sup>(w<sup>T</sup>x<sup>i</sup>+b). If y = 1, w<sup>T</sup>x<sup>i</sup>+b >> 0 and if y = -1, w<sup>T</sup>x<sup>i</sup>+b << 0. And for the entire train set, Γ<sub>FM</sub> = min Γ<sup>i</sup><sub>FM</sub>. Note that FM is not a good metric of confidence since its magnitude is directly affected by w and b. The `Geometric Margin` (GM) is defined as Γ<sup>i</sup><sub>GM</sub> = y<sup>i</sup>(w<sup>T</sup>x<sup>i</sup>+b) / ||w|| and Γ<sub>GM</sub> = min Γ<sup>i</sup><sub>GM</sub>. The optimal margin classifier seeks to max<sub>Γ, w, b</sub> Γ<sub>GM</sub> subject to y<sup>i</sup>(w<sup>T</sup>x<sup>i</sup>+b) / ||w|| >= Γ<sub>GM</sub> and ||w|| == 1. It can be written as min<sub>w, b</sub> (1/2) *||w||<sup>2</sup> subject to y<sup>i</sup>(w<sup>T</sup>x<sup>i</sup>+b) >= 1 when FM is scaled to be 1 or ||w|| = 1 / Γ<sub>GM</sub>. This optimization can be solved with `Quadratic Programming`.
+
+    -   Kernel Tricks: The parameters w can been seen as adding sime multiples of x, so the optimization problem can be written as min<sub>w, b</sub> (1/2) * (Σ<sub>i</sub>a<sub>i</sub>x<sup>i</sup>y<sup>i</sup>)<sup>T</sup>(Σ<sub>j</sub>a<sub>j</sub>x<sup>j</sup>y<sup>j</sup>) subject to y<sup>i</sup>(w<sup>T</sup>x<sup>i</sup>+b) >= 1. Expanding the matrix multiplication, min<sub>w, b</sub> (1/2) * (Σ<sub>i</sub>Σ<sub>j</sub>a<sub>i</sub>a<sub>j</sub>y<sup>i</sup>y<sup>j</sup>x<sup>i</sup><sup>T</sup>x<sup>j</sup>) where x<sup>i</sup><sup>T</sup>x<sup>j</sup> is the inner product <x<sup>i</sup>, x<sup>j</sup>>, or kernel K(x, z). Common kernels are `Linear Kernel` K(x, z) = x<sup>T</sup>z, `Gaussian Kernel` K(x, z) = exp(-||x-z||<sup>2</sup> / (2σ<sup>2</sup>)), and `Polynomial Kernel` K(x, z) = (x<sup>T</sup>z)<sup>d</sup>.
+
+    -   Regularization: For non-linear separable cases, L1-norm soft margin can be used with the C parameter controlling the functional margin error.
+
 -   Neural Networks (NN)
 -   Decision Trees
 -   Ensembles
@@ -195,8 +214,7 @@ Discriminative models find the conditional probability of y given x parameterize
     -   Naive Bayes
 
 -   Estimators:
-    -   Maximimum Likelihood Estimation (MLE, frequentist):
-    -   Maximum A Posteriori (MAP, bayesian):
+
 
 Depending on the update scheme,
 
