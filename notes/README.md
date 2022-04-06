@@ -170,7 +170,7 @@ A ML model consists of `model`, `loss`, `optimizer`, `hyperparameters`.
 
 -   Optimal parameters θ* an be found by `iterative` methods such as `Gradient Descent` that utilizes the differences between y and h<sub>θ</sub>(x) to update θ. `Parameter Initialization` is key to convergence of the optimization problem. For example, non-convex problems in `Neural Networks` strongly depends on the initialization and often prefers `random sampling from a uniform distribution of small numbers`, where random breaks symmetry and small prevents exploding gradients. On the other hand, `MLE in exponential family is always concave` with respect to η (convex with negative log likelihood) and any initialization would converge.
 
--   `Hyperparameters` are settings defined by users and not learned. The most important hyperparamete is `learning rate` which directly controls the parameter update rate.
+-   `Hyperparameters` are settings defined by users and not learned. The most important hyperparameter is `learning rate` which directly controls the parameter update rate.
 
 ### Discriminative Models
 
@@ -184,7 +184,7 @@ Discriminative models find the conditional probability of y given x parameterize
 
 -   `Softmax Regression` is logistic regression with `multi-class` classification. The logits (z, θ<sup>T</sup>x) are exponentialized and normalized so the probabilities sums to 1, (e<sup>θ<sub>i</sub><sup>T</sup>x</sup> / 	Σ<sub>j</sub> e<sup>θ<sub>j</sub><sup>T</sup>x</sup>). The loss function become `categorical cross entropy`. For problems with `multi-class single instance`, softmax is used and `multi-class multi-instance`, logistic regression is used for each instance.
 
--   `Exponential Family` is a family of models that can be factored into P(y; η) = b(y) exp(η<sup>T</sup>T(y)-α(η)), where α is log partition. Examples are `Gaussian`, `Bernoulli`, Poisson, Gamma, Exponential, Beta, Dirichlet. `Generalized Linear Models (GLMs)` are a set of models that follows the properties:
+-   `Exponential Family` is a family of models that can be factored into P(y; η) = b(y) exp(η<sup>T</sup>T(y)-α(η)), where α is log partition. Examples are `Gaussian`, `Bernoulli`, Poisson, Gamma, Exponential, Beta, Dirichlet. MLE of exponentation is always concave, so covergence is guaranteed with `random initialization`. `Generalized Linear Models (GLMs)` are a set of models that follows the properties:
     -   y | x; θ ~ Exponential Family
     -   η = θ<sup>T</sup>x  (linear)
     -   At train time, maximizes log P(y; η). At test time, outputs E[y; η] = h<sub>θ</sub>(x).
@@ -210,7 +210,38 @@ Linear models are very efficient but sometimes lack the capacity to model diffic
 
     -   Regularization: For non-linear separable cases, `L1-norm soft margin` can be used with the C parameter controlling the functional margin error.
 
--   Neural Networks (NN)
+-   `Neural Networks (NN)`: NNs consists of layers which is a collection of units / neurons. Each unit represents a parameter, and the connections between units are the weights. NNs with multi-llayers are also known as `Multilayer Perceptron (MLP)`. NNs introduce non-linearity by applying `non-linear activation` to the units. If all layers have linear activation, then it is the same as one layer with linear activation. Common activation functions are,
+
+    -   Rectified Linear Unit (ReLU): g(x) = max(0, x)
+    -   Sigmoid: g(x) = 1 / (1 + e<sup>-x</sup>)
+    -   tanh: g(x) = (e<sup>x</sup> - e<sup>-x</sup>) / (e<sup>x</sup> + e<sup>-x</sup>)
+
+    NNs increase model capacity by increasing number of layers (depth) and number of units (width). Typically, the input layer is visualized as the bottom layer and output layer on top. In-between layers are called `hidden layers`. NNs with multiple hidden layers are referred to as Deep Neural Networks (DNN). Layers with all units connected are know as `fully connected / dense` layers.
+
+    One key challenge of DNNs is the computation of parameter updates which is addressed by `backpropagation`. A `forward propagation` gives the prediction while the backpropagation computes the parameter updates using `chain rule`. The parameters are updated using iterative methods such as gradient descent. Due to the use of chain rule, activation functions are usually `differentiable` (sigmoid and tanh) or can be easily appoximated (ReLU).
+
+    Another challenge of DNNS is the vanishing / exploding gradients due to the many layers. This can be mitigated with `skip connections`. `Gradient clipping` also helps with exploding gradients. `Batch Normalization` also provides some help with vanishing / exploding gradients as well as `internal covariate shift` due to random initialization. However, evidences show that Batch Normalization may induce severe gradient explosion at initialization.
+
+    -   `Initialization` is extremely import for NNs. The initial parameters need to `break symmetry` to ensure each unit learns different functions. Typically biases are set to constants and weights are randomly sampled form a Gaussian or Uniform distribution. The `scale of the distribution` has a large impact as well. If the initial values are too big, gradients may explode. Likewise initial values too small, gradients may vanish. Below are some common initializations,
+
+        -   (Xavier) Glorot and Bengio Uniform: U[-1/sqrt(n), 1/sqrt(n)]
+        -   Xavier Uniform: U[-sqrt(6)/sqrt(m+n), sqrt(6)/sqrt(m+n)], designed for equal variance
+        -   Xavier Normal: N(0, sqrt(2/(m + n)))
+        -   He for ReLU:  N(0, sqrt(2/n))
+
+
+    Below is some specialized networks,
+
+    -   `Convolution Neural Networks (CNNs)` are used for many computer vision tasks, such as object detection and segmentation. Convolution is an very important operation in signal processing and is basically a sliding window approach. In practice, `autocorrelation` is used but still refered as `convolution`. Instead of fully connected layers, CNNs are built with convolution layers that the sliding window is defined by convolution `kernels`. Due to the kernels, the outputs becomes smaller than the input. Additionally, `stride` also makes the outputs smaller. `Padding` can be used to mitigate the downsizing of output size. The output size can be computed from `O = floor[(I + 2p - f) / s)] + 1`. Another special layer in CNNs is `pooling`, which `average pooling` takes the average in th window and `max pooling` takes the max in the window. Convolution and Pooling can be seen as `Infinitely Strong Priors` that some unit connections are forbidden and neighboring units should have equal weights. CNNs have three desirable properties, `sparse interactions`, `parameter sharing` and `equivariant representations`. Because
+
+    -   Recurrent Neural Networks (RNN)
+
+    -   Regularization: NNs have a special regularization technique `Dropout` which randomly drops units during training. It has the effect of evenly distributing the weights throughout the network and not rely on specific units. At test time, dropout is turned off.
+
+
+
+    <!---  It is common to increase depth rather than width since it takes exponentially more units to represent the same function [REF]. --->
+
 -   Decision Trees
 -   Ensembles
     -   Boosting: Adaptive Boosting (AdaBoost), Gradient Boosting Machines (GBM), Extreme Gradient Boosting (XGBoost)
