@@ -166,7 +166,7 @@ A ML model consists of `model`, `loss`, `optimizer`, `hyperparameters`.
 
 -   `Models` can be categorized into `Discriminative` and `Generative` based on their assumptions. Additionally, `parametric` models refer to models with fixed set of parameters while `non-parametric` models have number of parameters that grows with data size.
 
--   The `Loss` function quantifies the difference between h<sub>θ</sub>(x) and y to provide updates to θ to minimize the difference. The `Cost` function is the loss function for the entire train set. Loss functions can usually be derived from `Maximimum Likelihood Estimation (MLE)` in frequentist statistics and / or `Maximum A Posteriori (MAP)` in bayesian statistics.
+-   The `Loss` function (L) quantifies the difference between h<sub>θ</sub>(x) and y to provide updates to θ to minimize the difference. The `Cost` function (J) is the loss function for the entire train set. Loss functions can usually be derived from `Maximimum Likelihood Estimation (MLE)` in frequentist statistics and / or `Maximum A Posteriori (MAP)` in bayesian statistics.
 
 -   Optimal parameters θ* an be found by `iterative` methods such as `Gradient Descent` that utilizes the differences between y and h<sub>θ</sub>(x) to update θ. `Parameter Initialization` is key to convergence of the optimization problem. For example, non-convex problems in `Neural Networks` strongly depends on the initialization and often prefers `random sampling from a uniform distribution of small numbers`, where random breaks symmetry and small prevents exploding gradients. On the other hand, `MLE in exponential family is always concave` with respect to η (convex with negative log likelihood) and any initialization would converge.
 
@@ -229,48 +229,54 @@ Linear models are very efficient but sometimes lack the capacity to model diffic
         -   Xavier Normal: N(0, sqrt(2/(m + n)))
         -   He for ReLU:  N(0, sqrt(2/n))
 
+    Below are some specialized networks,
 
-    Below is some specialized networks,
+    -   `Convolution Neural Networks (CNNs)` are used for many computer vision tasks, such as object detection and segmentation. Convolution is an very important operation in signal processing and is basically a sliding window approach. In practice, `autocorrelation` is used but still refered as `convolution`. Instead of fully connected layers, CNNs are built with convolution layers that the sliding window is defined by convolution `kernels`. Due to the kernels, the outputs becomes smaller than the input. Additionally, `stride` also makes the outputs smaller. `Padding` can be used to mitigate the downsizing of output size. The output size can be computed from `O = floor[(I + 2p - f) / s)] + 1`. Another special layer in CNNs is `pooling`, which `average pooling` takes the average in th window and `max pooling` takes the max in the window. Convolution and Pooling can be seen as `Infinitely Strong Priors` that some unit connections are forbidden and neighboring units should have equal weights. CNNs have three desirable properties, `sparse interactions`, `parameter sharing` and `equivariant representations`.
 
-    -   `Convolution Neural Networks (CNNs)` are used for many computer vision tasks, such as object detection and segmentation. Convolution is an very important operation in signal processing and is basically a sliding window approach. In practice, `autocorrelation` is used but still refered as `convolution`. Instead of fully connected layers, CNNs are built with convolution layers that the sliding window is defined by convolution `kernels`. Due to the kernels, the outputs becomes smaller than the input. Additionally, `stride` also makes the outputs smaller. `Padding` can be used to mitigate the downsizing of output size. The output size can be computed from `O = floor[(I + 2p - f) / s)] + 1`. Another special layer in CNNs is `pooling`, which `average pooling` takes the average in th window and `max pooling` takes the max in the window. Convolution and Pooling can be seen as `Infinitely Strong Priors` that some unit connections are forbidden and neighboring units should have equal weights. CNNs have three desirable properties, `sparse interactions`, `parameter sharing` and `equivariant representations`. Because
-
-    -   Recurrent Neural Networks (RNN)
+    -   `Recurrent Neural Networks (RNNs)` are used for sequential data, such as text and video. Besides connection between layers, units are also connected across time / sequence. Therefore, parameters are updated via `backpropagation through time`. Connections can be `causal` where only information from the past is used. It can also be `bidirectional` where the entire sequence is being used. `Long-Term Dependencies` is a big challenge in sequence modeling due to vanishing / exploding gradients across time and space. Besides `skip connections`, `Gated RNNs`, such as `Gated Recurrent Units (GRUs)` and `Long Short Term Memory (LSTM)` are designed to address long-term dependencies by introducing `gates`. In particular, LSTMs uses the `cell` state to carry the information across the sequence. It is governed by three gates, `input`, `forget` and `cell / memory`. The forget gate controls how much to forget from the previous cell state. The input and cell gate control how much to update the cell state to pass to the next sequence. An additional `output` gate combines the updated cell state and the input state feed into the next unit. The input and previous output is concatenated for the gates.
 
     -   Regularization: NNs have a special regularization technique `Dropout` which randomly drops units during training. It has the effect of evenly distributing the weights throughout the network and not rely on specific units. At test time, dropout is turned off.
 
-
-
     <!---  It is common to increase depth rather than width since it takes exponentially more units to represent the same function [REF]. --->
 
--   Decision Trees
--   Ensembles
-    -   Boosting: Adaptive Boosting (AdaBoost), Gradient Boosting Machines (GBM), Extreme Gradient Boosting (XGBoost)
-    -   Bagging: Random Forest (RF)
+Besides adding non-linearity, methods that partition the feature space also may provide better performance. `Decision Trees` find the optimal cutoff for each feature to separate the samples for in-group homoneneity. `Gini Impurity` is often used as the loss function to update the cutoffs. Decision Trees can easily overfit by using the same number of leaves and samples. It is regularized by `pruning` and setting the `maximum tree depth and leaves`. Decision Trees suffer from only finding decision boundaries that align with the feature axes. A common way to boost the performance of weak performers is by `Ensembling`. Generally, there are two ways to ensemble,
+
+-   `Boosting` improves the performance by `sequentially adjusting the importance` of misclassified samples. Common boosting techniques are
+    -   Adaptive Boosting (AdaBoost) are used in decision trees to `upweight the decision stumps`
+    -   Gradient Boosting Machines (GBM) takes the boosting idea and apply it to gradient descent.
+    -   Extreme Gradient Boosting (XGBoost) used a more regularized model formalization to control over-fitting
+
+-   `Bagging` improves the performance by `parallelization`. A common technique is `Random Forest (RF)` that random samples the features in decision trees to build multiple classifiers and combined their prediction for the final prediction.
 
 -   K Nearest Neighbors (Non-Parametric)
--   K Means (Clustering, Non-Parametric)
+-   K Means Clustering (Non-Parametric)
 
--   Generative
-    -   Gaussian Discriminant Analysis
-    -   Naive Bayes
+### Generative Models
 
--   Estimators:
+-   Gaussian Discriminant Analysis
+-   Naive Bayes
+-   Generative Adversarial Networks (GANs)
+-   Autoencoder (AE)
 
+### Optimizers
 
-Depending on the update scheme,
+Optimizers control how the parameters are updated and can be separated into `iterative` and `analytical` methods.
+Analytical methods take the optimization problem and derives a fomula and θ* can be found by plugging the variables. An example of analytical methods is `Normal Equation` for linear regression.
 
--   Optimizers:
+Not all problems have an analytical solution, and `iterative methods` approaches θ* by incremental updates. `Gradient Descent` is a very common iterative method with many variations. The parameter update generically follows the rule: θ<sub>n</sub> = θ<sub>o</sub> - α dL/dθ, with α as learning rate and the parameter update follows the `negative` gradient direction. Depending on the batch size, gradient descent can be classified as,
 
-    -   Iterative Methods
-        -   Gradient Descent
-            -   Batch Gradient Descent
-            -   Mini-Batch Gradient Descent
-            -   Stochastic Gradient Descent
+-   `Batch Gradient Descent`: where batch size is the entire dataset (m)
+-   `Stochastic Gradient Descent`: where batch size is 1
+-   `Mini-Batch Gradient Descent`: where batch size is between 1 and m
 
-        -   Momentum
-        -   Adaptive Learning Rate
-        -   Momentum + Adaptive Learning Rate
-        -   Newton-Raphson
+Batch gradient descent suffers from heavy computation and longer updates but more smooth learning curve. Batch gradient descent is used when the entire dataset can be fitted into memory. Stochastic gradient descent updates frequently but very noisy and never reaches convergence. Stochastic gradient descent is used when one sample is very big, such as medical images. In practice, Mini-Batch gradient descent is often used.
 
-    -   Direct / Analytical Methods
-        -   Normal Equation
+ `Feature Normalization` is very important for accelerating the convergence of iterative methods. Variations of gradient descent also speeds up the convergence. See https://ruder.io/optimizing-gradient-descent/index.html for more details.
+
+-   `Momentum`: looks at previous updates to best inform the next update, it can be seen as a moving average
+-   `Adaptive Learning Rate (AdaGrad / AdaDelta / RMSprop)`: modifies the learning rate for each parameter based on previous updates
+-   `Momentum + Adaptive Learning Rate (Adam)`: Combines mementum and adaptive learning rate.
+
+Gradient descent and its variations are considered `first order` methods since the update rule is linear. `Second order` methods, such as `Newton-Raphson` uses the `Hessian Matrix` or second order derivative and benefits from `quadratic convergence`.
+
+-   `Newton-Raphson`: θ<sub>n</sub> = θ<sub>o</sub> - (dJ/dθ) / (dJ/dθ<sup>2</sup>) or θ<sub>n</sub> = θ<sub>o</sub> - H<sup>-1</sup> (dJ/dθ)
