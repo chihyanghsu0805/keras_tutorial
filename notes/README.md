@@ -248,13 +248,29 @@ Besides adding non-linearity, methods that partition the feature space also may 
 
 -   `Bagging` improves the performance by `parallelization`. A common technique is `Random Forest (RF)` that random samples the features in decision trees to build multiple classifiers and combined their prediction for the final prediction.
 
--   K Nearest Neighbors (Non-Parametric)
--   K Means Clustering (Non-Parametric)
+The following `non-parametric` models are commonly used for classification, regression and clustering. Both models follow the general principle to compute the `similarity` and observe k nearest neighbors. Similarity directly affects the prediction, therefore `similarity metric` and `feature tranformations` should be carefully designed.
+
+-   `K Nearest Neighbors (KNN)` (classification / regression): For classification the majority label within the k nearest neighbors will be the prediction. For regression, the average of k nearest neighbors will be the prediction.
+
+-   `K Means Clustering`: The algorithm repeats two step,
+    -   `Assign Cluster`: Compute the distance to all k centroids and assign a cluster id with the nearest centroid
+    -   `Update Cluster Centroid`: Update all centroid coordinates as the average of all points with the same cluster id. Due to `randomly initialization` of cluster centroids, it is common to run K-Means multiple times and choose the best result
+
+A common hyperparamter for both models is the `number of clusters, k`. In KNN, since the problem is supervised, prediction metrics can be used to inform the optimal k. In `clustering`, various techniques can be used to choose the optimal number of clusters,
+
+-   `Visualization`: `Silhouette plots` provides the inter-cluster similarity for each cluster. `K v.s. Total Distance` provides when the infliction point (slope > -1, theta > 135 degree) occurs
+-   `Cardinality` is the number of example per cluster
+-   `Magnitude` is the sum of ditance pre cluster
+-   `Performance of Downstream Analysis`
 
 ### Generative Models
 
--   Gaussian Discriminant Analysis
--   Naive Bayes
+Generative models find the joint probability of y and x P(y, x). From the definition of `conditional probability`, P(x | y) = P(x, y) P(y) and P(y | x) = P(x, y) P(x). Therefore, it can also be seen as modeling P(x | y) P(y) with P(y) as a prior.
+
+-   `Gaussian Discriminant Analysis (GDA)`: Using binary classification as an example to compare with logistic regression, GDA assumes x | y ~ N(μ, Σ) with different μ for y = 0 and 1 but identical Σ (Different Σ results in nonlinear decision boundary) and y is Bernoulli φ. It optimizes for φ, μ<sub>0</sub>, μ<sub>1</sub> and Σ. Under MLE, φ is the ratio of positive samples to all, μ is the average of all postive / negative samples, and Σ is computed with the estimated means. Due to the `stronger assumption`, GDA requires less data but only works when the data is Gaussian. Whereas Logistic Regression has weaker assumption and works with any distribution.
+
+-   `Naive Bayes` is another popular generative model, especially in sequence models. It asuumes Xs are `conditionally independent` given y, P(x<sub>1</sub>, ..., x<sub>n</sub> | y)  = P(x<sub>1</sub> | y) P(x<sub>2</sub> | x<sub>1</sub>, y) P(x<sub>3</sub> | x<sub>2</sub> x<sub>1</sub>, y)... = P(x<sub>1</sub> | y) P(x<sub>2</sub> | y) ... P(x<sub>n</sub> |y). `Laplace Smoothing` is used to avoid zero probabilities.
+
 -   Generative Adversarial Networks (GANs)
 -   Autoencoder (AE)
 
