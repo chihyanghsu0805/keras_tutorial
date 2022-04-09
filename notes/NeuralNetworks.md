@@ -6,10 +6,10 @@ NNs consists of layers which is a collection of units / neurons. Each unit repre
 
 Initialization is extremely import for NNs. The initial parameters need to `break symmetry` to ensure each unit learns different functions. Typically biases are set to constants and weights are randomly sampled form a Gaussian or Uniform distribution. The `scale of the distribution` has a large impact as well. If the initial values are too big, gradients may explode. Likewise initial values too small, gradients may vanish. Generally, the wights are initialized to have equal variance. the Below are some common initializations,
 
-    -   (Xavier) Glorot and Bengio Uniform: U[-1/sqrt(n), 1/sqrt(n)]
-    -   Xavier Uniform: U[-sqrt(6)/sqrt(m+n), sqrt(6)/sqrt(m+n)]
-    -   Xavier Normal: N(0, sqrt(2/(m + n)))
-    -   He for ReLU:  N(0, sqrt(2/n))
+-   (Xavier) Glorot and Bengio Uniform: U[-1/sqrt(n), 1/sqrt(n)]
+-   Xavier Uniform: U[-sqrt(6)/sqrt(m+n), sqrt(6)/sqrt(m+n)]
+-   Xavier Normal: N(0, sqrt(2/(m + n)))
+-   He for ReLU:  N(0, sqrt(2/n))
 
 ##  Activation Functions
 
