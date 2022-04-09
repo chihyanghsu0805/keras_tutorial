@@ -38,9 +38,10 @@ To build a good solution to a ML problem, it is important to understand the data
 
     -   `Numerical` Features
 
-        -   `Normalization`: Normalization transforms the distribution for each feature to a similar range
+        -   `Normalization`: Normalization transforms the distribution for each feature to a similar range. For the test set, the means and variance from train set is used.
             -   `Scaling`
             -   `Z-score`
+
         -   For distribution that follows power law, `log tranformations` can be used
         -   `Bucketing` can be used to group numerical values into categorical when the numerical value do not directly relate (e.g. longitude and latitude, zipcode)
             -   `Uniform`
@@ -117,6 +118,10 @@ When the dataset is small, `k-fold` cross validation is often used to give a bet
 
 The objective of cross validation is to check whether the model is overfitting to the train set and does not generalizes well.
 
+### Bayes Error
+
+`Bayes Error` is the lowest achievable error and is used to determine whether model is underfitting. `Human Performance` is often used as a surrogate for Bayes Error.
+
 ### Variance / Overfitting
 
 `Overfitting` happens when the model capacity is big enough and memorizes the train set. When tested with the dev or test set, the perfomance drops significantly and is therfore not useful. Overfitting is referred to model having `high variance`, with variance being a property of an estimator. It can be described as how much the estimator varies as a function of a data sample.
@@ -136,7 +141,7 @@ To detect overfitting, it is helpful to monitor the training loss and validation
 ### Regularization
 
 A ML model find the optimal parameters by minimizing the prediction and the provided labels. This is referred to as
-`Empirical Risk Minimization`. A common way to address overfitting is to add regularization terms to the optimization problem, or `Structural Risk Minimization`.
+`Empirical Risk Minimization`. A common way to address overfitting is to add regularization terms to the optimization problem, or `Structural Risk Minimization`. Regularization prevents overfitting by forcing the parameters to be small hence limits the `parameter ranges to be mostly linear`.
 
 Two regularization terms are commonly used,
 
@@ -147,6 +152,7 @@ Two regularization terms are commonly used,
 
 Besides regularization, other techniques can help detect and reduce overfitting.
 
+-   Data Augmentation: applying some tranformations (flipping, rotation, color shift) to the input allows the model to learn from a larger sample size. `Statistic Consistency` states that with infinite sample size, the variance should be 0
 -   Early Stopping: which the user defines criteria for stopping the model training
 -   SVM utilizes the C coefficient along with L1 / L2
 -   Decision Tress can be regularized by `pruning`, tree `depth` and number of trees
@@ -170,7 +176,9 @@ A ML model consists of `model`, `loss`, `optimizer`, `hyperparameters`.
 
 -   Optimal parameters θ* an be found by `iterative` methods such as `Gradient Descent` that utilizes the differences between y and h<sub>θ</sub>(x) to update θ. `Parameter Initialization` is key to convergence of the optimization problem. For example, non-convex problems in `Neural Networks` strongly depends on the initialization and often prefers `random sampling from a uniform distribution of small numbers`, where random breaks symmetry and small prevents exploding gradients. On the other hand, `MLE in exponential family is always concave` with respect to η (convex with negative log likelihood) and any initialization would converge.
 
--   `Hyperparameters` are settings defined by users and not learned. The most important hyperparameter is `learning rate` which directly controls the parameter update rate.
+-   `Hyperparameters` are settings defined by users and not learned. The most important hyperparameter is `learning rate` which directly controls the parameter update rate. Even though, convergence is guaranteed with constant learning rate under `Lipschitz Continuous`, `Learning Rate Decay` is often applied for faster convergence. `Grid Search` and `Random Search` are commonly used to search for hyperparameters.  For both approaches, `appropriate scale` should be used for faster search. For example, learning rate should be searched on an exponential scale instead of linear.
+
+Generally, model selection can be approached either carefully (Panda) or massively (Caviar).
 
 ### Discriminative Models
 
@@ -180,9 +188,9 @@ Discriminative models find the conditional probability of y given x parameterize
 
 -   `Locally Weighted Linear Regression` (Non-Parametric) weighs the individual loss by non-negative function w(i) based on their distance to the point of prediction.
 
--   `Logistic Regression` (Exponential family) can be used to predict probabilities and is often used for `binary classification` with probability threshold. It follows the form h<sub>θ</sub>(x) = σ(z) with σ as the `sigmoid/logistic` function, σ (z) = 1/(1+e<sup>-z</sup>) and z = θ<sup>T</sup>x. The probability resembles the `Bernoulli` distribution, P(y = x; θ) = h<sub>θ</sub>(x) <sup>y</sup> (1 - h<sub>θ</sub>(x)) <sup> (1-y) </sup>. `Regularization` is `extremely important` for Logistic Regression as the sigmoid function reaches asymptotic when z approaches +/- infinity. Without regularization, the parameters may explode and/or vanish. The loss function is the product of all examples Π P(y = x; θ) and is usually applied by a logarithmic to become `log likelihood` which becomes sum of all examples, Σ P(y = x; θ) = 	Σ y log(h<sub>θ</sub>(x)) + (1-y) log((1 - h<sub>θ</sub>(x))). This loss is also know as `cross entropy loss (XEnt)`. `Maximum Likelihood Estimation` maximizes the log likelihood with gradient ascent, but is usually transformed to `minimizing negative log likelihood` with `gradient descent`.
+-   `Logistic Regression` (Exponential family) can be used to predict probabilities and is often used for `binary classification` with probability threshold. It follows the form h<sub>θ</sub>(x) = σ(z) with σ as the `sigmoid/logistic` function, σ (z) = 1/(1+e<sup>-z</sup>) and z = θ<sup>T</sup>x. The probability resembles the `Bernoulli` distribution, P(y = x; θ) = h<sub>θ</sub>(x) <sup>y</sup> (1 - h<sub>θ</sub>(x)) <sup> (1-y) </sup>. `Regularization` is `extremely important` for Logistic Regression as the sigmoid function reaches asymptotic when z approaches +/- infinity. Without regularization, the parameters may explode and/or vanish. The loss function is the product of all examples Π P(y = x; θ) and is usually applied by a logarithmic to become `log likelihood` which becomes sum of all examples, Σ P(y = x; θ) = Σ y log(h<sub>θ</sub>(x)) + (1-y) log((1 - h<sub>θ</sub>(x))). This loss is also know as `cross entropy loss (XEnt)`. `Maximum Likelihood Estimation` maximizes the log likelihood with gradient ascent, but is usually transformed to `minimizing negative log likelihood` with `gradient descent`.
 
--   `Softmax Regression` is logistic regression with `multi-class` classification. The logits (z, θ<sup>T</sup>x) are exponentialized and normalized so the probabilities sums to 1, (e<sup>θ<sub>i</sub><sup>T</sup>x</sup> / 	Σ<sub>j</sub> e<sup>θ<sub>j</sub><sup>T</sup>x</sup>). The loss function become `categorical cross entropy`. For problems with `multi-class single instance`, softmax is used and `multi-class multi-instance`, logistic regression is used for each instance.
+-   `Softmax Regression` is logistic regression with `multi-class` classification, or `multinoulli distribution`. The logits (z, θ<sup>T</sup>x) are exponentialized and normalized so the probabilities sums to 1, (e<sup>θ<sub>i</sub><sup>T</sup>x</sup> / 	Σ<sub>j</sub> e<sup>θ<sub>j</sub><sup>T</sup>x</sup>). The loss function become `categorical cross entropy`. For problems with `multi-class single instance`, softmax is used and `multi-class multi-instance`, logistic regression is used for each instance.
 
 -   `Exponential Family` is a family of models that can be factored into P(y; η) = b(y) exp(η<sup>T</sup>T(y)-α(η)), where α is log partition. Examples are `Gaussian`, `Bernoulli`, Poisson, Gamma, Exponential, Beta, Dirichlet. MLE of exponentation is always concave, so covergence is guaranteed with `random initialization`. `Generalized Linear Models (GLMs)` are a set of models that follows the properties:
     -   y | x; θ ~ Exponential Family
@@ -210,34 +218,7 @@ Linear models are very efficient but sometimes lack the capacity to model diffic
 
     -   Regularization: For non-linear separable cases, `L1-norm soft margin` can be used with the C parameter controlling the functional margin error.
 
--   `Neural Networks (NN)`: NNs consists of layers which is a collection of units / neurons. Each unit represents a parameter, and the connections between units are the weights. NNs with multi-llayers are also known as `Multilayer Perceptron (MLP)`. NNs introduce non-linearity by applying `non-linear activation` to the units. If all layers have linear activation, then it is the same as one layer with linear activation. Common activation functions are,
-
-    -   Rectified Linear Unit (ReLU): g(x) = max(0, x)
-    -   Sigmoid: g(x) = 1 / (1 + e<sup>-x</sup>)
-    -   tanh: g(x) = (e<sup>x</sup> - e<sup>-x</sup>) / (e<sup>x</sup> + e<sup>-x</sup>)
-
-    NNs increase model capacity by increasing number of layers (depth) and number of units (width). Typically, the input layer is visualized as the bottom layer and output layer on top. In-between layers are called `hidden layers`. NNs with multiple hidden layers are referred to as Deep Neural Networks (DNN). Layers with all units connected are know as `fully connected / dense` layers.
-
-    One key challenge of DNNs is the computation of parameter updates which is addressed by `backpropagation`. A `forward propagation` gives the prediction while the backpropagation computes the parameter updates using `chain rule`. The parameters are updated using iterative methods such as gradient descent. Due to the use of chain rule, activation functions are usually `differentiable` (sigmoid and tanh) or can be easily appoximated (ReLU).
-
-    Another challenge of DNNS is the vanishing / exploding gradients due to the many layers. This can be mitigated with `skip connections`. `Gradient clipping` also helps with exploding gradients. `Batch Normalization` also provides some help with vanishing / exploding gradients as well as `internal covariate shift` due to random initialization. However, evidences show that Batch Normalization may induce severe gradient explosion at initialization.
-
-    -   `Initialization` is extremely import for NNs. The initial parameters need to `break symmetry` to ensure each unit learns different functions. Typically biases are set to constants and weights are randomly sampled form a Gaussian or Uniform distribution. The `scale of the distribution` has a large impact as well. If the initial values are too big, gradients may explode. Likewise initial values too small, gradients may vanish. Below are some common initializations,
-
-        -   (Xavier) Glorot and Bengio Uniform: U[-1/sqrt(n), 1/sqrt(n)]
-        -   Xavier Uniform: U[-sqrt(6)/sqrt(m+n), sqrt(6)/sqrt(m+n)], designed for equal variance
-        -   Xavier Normal: N(0, sqrt(2/(m + n)))
-        -   He for ReLU:  N(0, sqrt(2/n))
-
-    Below are some specialized networks,
-
-    -   `Convolution Neural Networks (CNNs)` are used for many computer vision tasks, such as object detection and segmentation. Convolution is an very important operation in signal processing and is basically a sliding window approach. In practice, `autocorrelation` is used but still refered as `convolution`. Instead of fully connected layers, CNNs are built with convolution layers that the sliding window is defined by convolution `kernels`. Due to the kernels, the outputs becomes smaller than the input. Additionally, `stride` also makes the outputs smaller. `Padding` can be used to mitigate the downsizing of output size. The output size can be computed from `O = floor[(I + 2p - f) / s)] + 1`. Another special layer in CNNs is `pooling`, which `average pooling` takes the average in th window and `max pooling` takes the max in the window. Convolution and Pooling can be seen as `Infinitely Strong Priors` that some unit connections are forbidden and neighboring units should have equal weights. CNNs have three desirable properties, `sparse interactions`, `parameter sharing` and `equivariant representations`.
-
-    -   `Recurrent Neural Networks (RNNs)` are used for sequential data, such as text and video. Besides connection between layers, units are also connected across time / sequence. Therefore, parameters are updated via `backpropagation through time`. Connections can be `causal` where only information from the past is used. It can also be `bidirectional` where the entire sequence is being used. `Long-Term Dependencies` is a big challenge in sequence modeling due to vanishing / exploding gradients across time and space. Besides `skip connections`, `Gated RNNs`, such as `Gated Recurrent Units (GRUs)` and `Long Short Term Memory (LSTM)` are designed to address long-term dependencies by introducing `gates`. In particular, LSTMs uses the `cell` state to carry the information across the sequence. It is governed by three gates, `input`, `forget` and `cell / memory`. The forget gate controls how much to forget from the previous cell state. The input and cell gate control how much to update the cell state to pass to the next sequence. An additional `output` gate combines the updated cell state and the input state feed into the next unit. The input and previous output is concatenated for the gates.
-
-    -   Regularization: NNs have a special regularization technique `Dropout` which randomly drops units during training. It has the effect of evenly distributing the weights throughout the network and not rely on specific units. At test time, dropout is turned off.
-
-    <!---  It is common to increase depth rather than width since it takes exponentially more units to represent the same function [REF]. --->
+-   [`Neural Networks (NN)`](./NeuralNetworks.md)
 
 Besides adding non-linearity, methods that partition the feature space also may provide better performance. `Decision Trees` find the optimal cutoff for each feature to separate the samples for in-group homoneneity. `Gini Impurity` is often used as the loss function to update the cutoffs. Decision Trees can easily overfit by using the same number of leaves and samples. It is regularized by `pruning` and setting the `maximum tree depth and leaves`. Decision Trees suffer from only finding decision boundaries that align with the feature axes. A common way to boost the performance of weak performers is by `Ensembling`. Generally, there are two ways to ensemble,
 
