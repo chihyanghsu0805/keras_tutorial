@@ -11,6 +11,7 @@ Including,
 # Overview
 
 ## Problem
+
 ML problems can be catgorized into the following,
 
 -   `Supervised` ML have features and labels. Depending on the labels, it can be further categorized into
@@ -114,9 +115,16 @@ Traditionally, the data is `randomly` splitted into approximately 70% for train 
 
 Typically, the data is randomly shuffled before splitting. However, random splitting is not ideal in certain scenarios. For example, class imbalance, clustered, and time dependent data. See https://developers.google.com/machine-learning/crash-course/18th-century-literature for more details. For randomization, always `seed` the sampling for reproducible results.
 
-When the dataset is small, `k-fold` cross validation is often used to give a better estimate. K-fold cross validation first splits the dataset into k partitions, and trains k models each with one of the partitions left out. The final performance is averaged across all models. `Leave-one-out` cross validation is a special case where k is the sample size.
+When the dataset is small, `k-fold` cross validation is often used to give a better estimate. K-fold cross validation first splits the dataset into k partitions, and trains k models each with one of the partitions left out. The final performance is averaged across all models. `Leave-one-out` cross validation is a special case where k is the sample size. The objective of cross validation is to check whether the model is overfitting to the train set and does not generalizes well.
 
-The objective of cross validation is to check whether the model is overfitting to the train set and does not generalizes well.
+Generally in ML, the chains of assumption follows,
+
+-   Fit train set well ~ human level performance (bigger network, different alogrithm)
+-   Fit dev set well (regularization, bigger train set)
+-   Fit test set wll (bigger dev set)
+-   Real World Data (change dev set of cost function)
+
+Build the first system quickly then iterate.
 
 ### Bayes Error
 
@@ -136,7 +144,17 @@ The most common way to address high bias is to increase the hypothesis space or 
 
 The relationship between bias and variance is often seen as a trade-off. But it is more of finding the optimal model capacity so that both the bias and generalization error is low.
 
+Bayes (Human) Error <- `(Avoidable) Bias` -> Train Error <- `Variance` -> Dev Error
+
 To detect overfitting, it is helpful to monitor the training loss and validation loss while training.
+
+### Different Train / Dev Distribution
+
+Due to difficulties in data collection, train and dev set may have different distributions. For example, many pictures maybe collected from the web (200k) but not as many from mobile apps (10k). Random sampling may not work well. A better options is 200k+5k, 2.5k, 2.5k for train / dev / test respectively. Another example is Speech Recognition inside Vehicles. In this scenario, an additional set, `train-dev set`, is useful for analyzing the effect of distribution mismatch. Train-dev set is not used in training.
+
+Bayes (Human) Error <- `(Avoidable) Bias` -> Train Error <- `Variance` -> Dev Error <- `Data Mismatch` -> Dev Error
+
+Sometimes, dev error may be lower than train error when the `dev set is easier` than the train set.
 
 ### Regularization
 
@@ -182,42 +200,13 @@ Generally, model selection can be approached either carefully (Panda) or massive
 
 ### Discriminative Models
 
-Discriminative models find the conditional probability of y given x parameterized by θ, P(y | x; θ).
+Discriminative models find the conditional probability of y given x parameterized by θ, P(y | x; θ). The most common model is `Linear Models`.
 
--   `Linear Regression` (Exponential family) follows the form h<sub>θ</sub>(x) = θ<sup>T</sup>x with x<sub>0</sub> being 1 and θ<sub>0</sub> being the bias term. It commonly uses `Minimum Squared Error` (MSE) as the Loss term, (y -h<sub>θ</sub>(x))<sup>2</sup> which can be derived from `Maximum Likelihood Estimation (MLE)` with `Gaussian` distribution. Besides iterative methods, Linear Regression can also be solved using analytical methods such as  Normal equation to find θ* in one step with θ* = (X<sup>T</sup>X)<sup>-1</sup>X<sup>T</sup>y, given that (X<sup>T</sup>X) is invertible. Note that matrix inverses are expensive operation and prone to numerical errors.
-
--   `Locally Weighted Linear Regression` (Non-Parametric) weighs the individual loss by non-negative function w(i) based on their distance to the point of prediction.
-
--   `Logistic Regression` (Exponential family) can be used to predict probabilities and is often used for `binary classification` with probability threshold. It follows the form h<sub>θ</sub>(x) = σ(z) with σ as the `sigmoid/logistic` function, σ (z) = 1/(1+e<sup>-z</sup>) and z = θ<sup>T</sup>x. The probability resembles the `Bernoulli` distribution, P(y = x; θ) = h<sub>θ</sub>(x) <sup>y</sup> (1 - h<sub>θ</sub>(x)) <sup> (1-y) </sup>. `Regularization` is `extremely important` for Logistic Regression as the sigmoid function reaches asymptotic when z approaches +/- infinity. Without regularization, the parameters may explode and/or vanish. The loss function is the product of all examples Π P(y = x; θ) and is usually applied by a logarithmic to become `log likelihood` which becomes sum of all examples, Σ P(y = x; θ) = Σ y log(h<sub>θ</sub>(x)) + (1-y) log((1 - h<sub>θ</sub>(x))). This loss is also know as `cross entropy loss (XEnt)`. `Maximum Likelihood Estimation` maximizes the log likelihood with gradient ascent, but is usually transformed to `minimizing negative log likelihood` with `gradient descent`.
-
--   `Softmax Regression` is logistic regression with `multi-class` classification, or `multinoulli distribution`. The logits (z, θ<sup>T</sup>x) are exponentialized and normalized so the probabilities sums to 1, (e<sup>θ<sub>i</sub><sup>T</sup>x</sup> / 	Σ<sub>j</sub> e<sup>θ<sub>j</sub><sup>T</sup>x</sup>). The loss function become `categorical cross entropy`. For problems with `multi-class single instance`, softmax is used and `multi-class multi-instance`, logistic regression is used for each instance.
-
--   `Exponential Family` is a family of models that can be factored into P(y; η) = b(y) exp(η<sup>T</sup>T(y)-α(η)), where α is log partition. Examples are `Gaussian`, `Bernoulli`, Poisson, Gamma, Exponential, Beta, Dirichlet. MLE of exponentation is always concave, so covergence is guaranteed with `random initialization`. `Generalized Linear Models (GLMs)` are a set of models that follows the properties:
-    -   y | x; θ ~ Exponential Family
-    -   η = θ<sup>T</sup>x  (linear)
-    -   At train time, maximizes log P(y; η). At test time, outputs E[y; η] = h<sub>θ</sub>(x).
-    -   Learning update rule: θ<sub>j</sub> = θ<sub>j</sub> + α (y<sup>i</sup> - h<sub>θ</sub>(x<sup>i</sup>)) x<sup>i</sup><sub>j</sub>, where α is learning rate.
+-   [`Linear Models`](./LinearModels.md)
 
 Linear models are very efficient but sometimes lack the capacity to model difficult problems. `Non-linearity` can be introduced into linear models by `feature crosses` but may be prohibitively cumbersome. Support Vector Machines and Neural Networks add non-linearity by using kernels and activation functions.
 
--   `Support Vector Machines (SVMs)`: SVMs are `optimal margin classifiers` with `kernel tricks`.
-
-    -   Optimal Margin Classifiers: For binary classification problems, the labels y become [-1, 1] and θ is represented by w and b. The hypothesis becomes h<sub>w,b</sub>(x) = g(w<sup>T</sup>x+b).
-
-        -   The `Functional Margin` (FM) is defined as Γ<sup>i</sup><sub>FM</sub> = y<sup>i</sup>(w<sup>T</sup>x<sup>i</sup>+b). If y = 1, w<sup>T</sup>x<sup>i</sup>+b >> 0 and if y = -1, w<sup>T</sup>x<sup>i</sup>+b << 0. For the entire train set, Γ<sub>FM</sub> = min Γ<sup>i</sup><sub>FM</sub>. Note that FM is not a good metric of confidence since its magnitude is directly affected by w and b.
-
-        -   The `Geometric Margin` (GM) is defined as Γ<sup>i</sup><sub>GM</sub> = y<sup>i</sup>(w<sup>T</sup>x<sup>i</sup>+b) / ||w|| and Γ<sub>GM</sub> = min Γ<sup>i</sup><sub>GM</sub>.
-
-        -   The optimal margin classifier seeks to max<sub>Γ, w, b</sub> Γ<sub>GM</sub> subject to y<sup>i</sup>(w<sup>T</sup>x<sup>i</sup>+b) / ||w|| >= Γ<sub>GM</sub> and ||w|| = 1. It can be written as min<sub>w, b</sub> (1/2) *||w||<sup>2</sup> subject to y<sup>i</sup>(w<sup>T</sup>x<sup>i</sup>+b) >= 1 when FM is scaled to be 1 or ||w|| = 1 / Γ<sub>GM</sub>. This optimization can be solved with `Quadratic Programming`.
-
-    -   Kernel Tricks: The parameters w can been seen as adding some multiples of x, so the optimization problem can be written as min<sub>w, b</sub> (1/2) * (Σ<sub>i</sub>a<sub>i</sub>x<sup>i</sup>y<sup>i</sup>)<sup>T</sup>(Σ<sub>j</sub>a<sub>j</sub>x<sup>j</sup>y<sup>j</sup>) subject to y<sup>i</sup>(w<sup>T</sup>x<sup>i</sup>+b) >= 1. Expanding the matrix multiplication, min<sub>w, b</sub> (1/2) * (Σ<sub>i</sub>Σ<sub>j</sub>a<sub>i</sub>a<sub>j</sub>y<sup>i</sup>y<sup>j</sup>x<sup>i</sup><sup>T</sup>x<sup>j</sup>) where x<sup>i</sup><sup>T</sup>x<sup>j</sup> is the inner product <x<sup>i</sup>, x<sup>j</sup>>, or kernel K(x, z). Common kernels are,
-
-        -   `Linear Kernel` K(x, z) = x<sup>T</sup>z
-        -   `Gaussian Kernel` K(x, z) = exp(-||x-z||<sup>2</sup> / (2σ<sup>2</sup>))
-        -   `Polynomial Kernel` K(x, z) = (x<sup>T</sup>z)<sup>d</sup>
-
-    -   Regularization: For non-linear separable cases, `L1-norm soft margin` can be used with the C parameter controlling the functional margin error.
-
+-   [`Support Vector Machines (SVMs)`](./SupportVectorMachines.md)
 -   [`Neural Networks (NN)`](./NeuralNetworks.md)
 
 Besides adding non-linearity, methods that partition the feature space also may provide better performance. `Decision Trees` find the optimal cutoff for each feature to separate the samples for in-group homoneneity. `Gini Impurity` is often used as the loss function to update the cutoffs. Decision Trees can easily overfit by using the same number of leaves and samples. It is regularized by `pruning` and setting the `maximum tree depth and leaves`. Decision Trees suffer from only finding decision boundaries that align with the feature axes. A common way to boost the performance of weak performers is by `Ensembling`. Generally, there are two ways to ensemble,
@@ -277,3 +266,21 @@ Batch gradient descent suffers from heavy computation and longer updates but mor
 Gradient descent and its variations are considered `first order` methods since the update rule is linear. `Second order` methods, such as `Newton-Raphson` uses the `Hessian Matrix` or second order derivative and benefits from `quadratic convergence`.
 
 -   `Newton-Raphson`: θ<sub>n</sub> = θ<sub>o</sub> - (dJ/dθ) / (dJ/dθ<sup>2</sup>) or θ<sub>n</sub> = θ<sub>o</sub> - H<sup>-1</sup> (dJ/dθ)
+
+## Model Analysis
+
+`Error Analysis` is used to understand which part of workflow results in most error and guide where to improve the workflow. Similarly, `Ceiling Analysis` is used to understand which part of workflow has the most potential improvement.
+
+A common error is `Mislabeled Samples`. For big enough train set, it may not pay-off to correct all mislabeled samples. But mislabeled samples in dev and test set should always be corrected and ensure dev and test set ctill comes from same distribution. Additionally, examine the correct samples as well.
+
+`Ablation Analysis` is used to understand removing which part of the model has the most impact.
+
+## Other Concepts
+
+-   `Transfer Learning` is a useful technique when two datasets A and B has same input (image, audio), and there are more data for A and not as much for B. Models trained on A can be used for `pre-training` for B and iterate some epochs for `fine-tuning` under the assumption that the lower level features may be helpful.
+
+-   `Knowledge Distillation` is used for transferring knowledge from one large model to one small model. An example is `teacher student network`.
+
+-   `Multi-Task Learning` is usefful when a set of tasks could share lower level features, for example obeject detection with multiple labels in image. The label distribution should be similar, and the dataset should be big enough.
+
+-   `End-to-End learning` is helpful when each of the `subtasks are easier` and there are `more data for subtasks`.
