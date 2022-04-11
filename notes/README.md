@@ -241,7 +241,7 @@ Generative models find the joint probability of y and x P(y, x). From the defini
 
 -   `Naive Bayes` is another popular generative model, especially in sequence models. It asuumes Xs are `conditionally independent` given y, P(x<sub>1</sub>, ..., x<sub>n</sub> | y)  = P(x<sub>1</sub> | y) P(x<sub>2</sub> | x<sub>1</sub>, y) P(x<sub>3</sub> | x<sub>2</sub> x<sub>1</sub>, y)... = P(x<sub>1</sub> | y) P(x<sub>2</sub> | y) ... P(x<sub>n</sub> |y). `Laplace Smoothing` is used to avoid zero probabilities.
 
--   Generative Adversarial Networks (GANs)
+-   [`Generative Adversarial Networks (GANs)`](./GANs.md)
 -   Autoencoder (AE)
 
 ### Optimizers
