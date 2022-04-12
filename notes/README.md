@@ -24,6 +24,7 @@ ML problems can be catgorized into the following,
     -   `Clustering`
     -   Network Analysis
     -   Market Segmentation
+    -   [`Principal Components Analysis`](./PCA.md)
 
 -   `Reinforcement Learning` (RL): RL provides an environment to learn value and policy functions.
 
@@ -206,10 +207,12 @@ Discriminative models find the conditional probability of y given x parameterize
 
 Linear models are very efficient but sometimes lack the capacity to model difficult problems. `Non-linearity` can be introduced into linear models by `feature crosses` but may be prohibitively cumbersome. Support Vector Machines and Neural Networks add non-linearity by using kernels and activation functions.
 
--   [`Support Vector Machines (SVMs)`](./SupportVectorMachines.md)
--   [`Neural Networks (NN)`](./NeuralNetworks.md)
+-   [`Support Vector Machines (SVMs)`](./SVMs.md)
+-   [`Neural Networks (NN)`](./NNs.md)
 
-Besides adding non-linearity, methods that partition the feature space also may provide better performance. `Decision Trees` find the optimal cutoff for each feature to separate the samples for in-group homoneneity. `Gini Impurity` is often used as the loss function to update the cutoffs. Decision Trees can easily overfit by using the same number of leaves and samples. It is regularized by `pruning` and setting the `maximum tree depth and leaves`. Decision Trees suffer from only finding decision boundaries that align with the feature axes. A common way to boost the performance of weak performers is by `Ensembling`. Generally, there are two ways to ensemble,
+Besides adding non-linearity, methods that partition the feature space also may provide better performance. `Decision Trees` find the optimal cutoff for each feature to separate the samples for in-group homoneneity. `Gini Impurity` is often used as the loss function to update the cutoffs. Decision Trees can easily overfit by using the same number of leaves and samples. It is regularized by `pruning` and setting the `maximum tree depth and leaves`. Decision Trees suffer from only finding decision boundaries that align with the feature axes.
+
+A common way to boost the performance of weak performers is by `Ensembling`. Generally, there are two ways to ensemble,
 
 -   `Boosting` improves the performance by `sequentially adjusting the importance` of misclassified samples. Common boosting techniques are
     -   Adaptive Boosting (AdaBoost) are used in decision trees to `upweight the decision stumps`
@@ -217,6 +220,19 @@ Besides adding non-linearity, methods that partition the feature space also may 
     -   Extreme Gradient Boosting (XGBoost) used a more regularized model formalization to control over-fitting
 
 -   `Bagging` improves the performance by `parallelization`. A common technique is `Random Forest (RF)` that random samples the features in decision trees to build multiple classifiers and combined their prediction for the final prediction.
+
+### Generative Models
+
+Generative models find the joint probability of y and x P(y, x). From the definition of `conditional probability`, P(x | y) = P(x, y) P(y) and P(y | x) = P(x, y) P(x). Therefore, it can also be seen as modeling P(x | y) P(y) with P(y) as a prior.
+
+-   `Gaussian Discriminant Analysis (GDA)`: Using binary classification as an example to compare with logistic regression, GDA assumes x | y ~ N(μ, Σ) with different μ for y = 0 and 1 but identical Σ (Different Σ results in nonlinear decision boundary) and y is Bernoulli φ. It optimizes for φ, μ<sub>0</sub>, μ<sub>1</sub> and Σ. Under MLE, φ is the ratio of positive samples to all, μ is the average of all postive / negative samples, and Σ is computed with the estimated means. Due to the `stronger assumption`, GDA requires less data but only works when the data is Gaussian. Whereas Logistic Regression has weaker assumption and works with any distribution.
+
+-   `Naive Bayes` is another popular generative model, especially in sequence models. It asuumes Xs are `conditionally independent` given y, P(x<sub>1</sub>, ..., x<sub>n</sub> | y)  = P(x<sub>1</sub> | y) P(x<sub>2</sub> | x<sub>1</sub>, y) P(x<sub>3</sub> | x<sub>2</sub> x<sub>1</sub>, y)... = P(x<sub>1</sub> | y) P(x<sub>2</sub> | y) ... P(x<sub>n</sub> |y). `Laplace Smoothing` is used to avoid zero probabilities.
+
+-   [`Generative Adversarial Networks (GANs)`](./GANs.md)
+-   [`Autoencoders (AEs)`](./AE.md)
+
+### Non-Parametric Models
 
 The following `non-parametric` models are commonly used for classification, regression and clustering. Both models follow the general principle to compute the `similarity` and observe k nearest neighbors. Similarity directly affects the prediction, therefore `similarity metric` and `feature tranformations` should be carefully designed.
 
@@ -230,19 +246,8 @@ A common hyperparamter for both models is the `number of clusters, k`. In KNN, s
 
 -   `Visualization`: `Silhouette plots` provides the inter-cluster similarity for each cluster. `K v.s. Total Distance` provides when the infliction point (slope > -1, theta > 135 degree) occurs
 -   `Cardinality` is the number of example per cluster
--   `Magnitude` is the sum of ditance pre cluster
+-   `Magnitude` is the sum of distance pre cluster
 -   `Performance of Downstream Analysis`
-
-### Generative Models
-
-Generative models find the joint probability of y and x P(y, x). From the definition of `conditional probability`, P(x | y) = P(x, y) P(y) and P(y | x) = P(x, y) P(x). Therefore, it can also be seen as modeling P(x | y) P(y) with P(y) as a prior.
-
--   `Gaussian Discriminant Analysis (GDA)`: Using binary classification as an example to compare with logistic regression, GDA assumes x | y ~ N(μ, Σ) with different μ for y = 0 and 1 but identical Σ (Different Σ results in nonlinear decision boundary) and y is Bernoulli φ. It optimizes for φ, μ<sub>0</sub>, μ<sub>1</sub> and Σ. Under MLE, φ is the ratio of positive samples to all, μ is the average of all postive / negative samples, and Σ is computed with the estimated means. Due to the `stronger assumption`, GDA requires less data but only works when the data is Gaussian. Whereas Logistic Regression has weaker assumption and works with any distribution.
-
--   `Naive Bayes` is another popular generative model, especially in sequence models. It asuumes Xs are `conditionally independent` given y, P(x<sub>1</sub>, ..., x<sub>n</sub> | y)  = P(x<sub>1</sub> | y) P(x<sub>2</sub> | x<sub>1</sub>, y) P(x<sub>3</sub> | x<sub>2</sub> x<sub>1</sub>, y)... = P(x<sub>1</sub> | y) P(x<sub>2</sub> | y) ... P(x<sub>n</sub> |y). `Laplace Smoothing` is used to avoid zero probabilities.
-
--   [`Generative Adversarial Networks (GANs)`](./GANs.md)
--   Autoencoder (AE)
 
 ### Optimizers
 
