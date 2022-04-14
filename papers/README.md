@@ -1,6 +1,4 @@
-This folder contains papers in deep learning.
-
-Related works are grouped in individual folders.
+# This folder contains papers in deep learning, related works are grouped in individual folders.
 
 ICLR:
 - 2022:
@@ -24,6 +22,10 @@ CogSci:
 
 ICCV:
 - 2021:
+    -   Swin Transformer: Hierarchical Vision Transformer using Shifted Windows
+        -   https://arxiv.org/abs/2103.14030
+        -   https://github.com/microsoft/Swin-Transformer
+
     - Explaining in Style: Training a GAN to explain a classifier in StyleSpace
         - https://arxiv.org/pdf/2104.13369.pdf
         - https://explaining-in-style.github.io/
