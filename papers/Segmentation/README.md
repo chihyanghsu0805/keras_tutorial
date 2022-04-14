@@ -1,5 +1,20 @@
 # This folder contains UNet related papers.
 
+#   Deeplab
+
+-   Rethinking Atrous Convolution for Semantic Image Segmentation
+    -   https://arxiv.org/abs/1706.05587
+
+-   DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs
+    -   2017 IEEE transactions on pattern analysis and machine intelligence
+    -   https://ieeexplore.ieee.org/abstract/document/7913730
+    -   http://liangchiehchen.com/projects/DeepLab.html#download
+
+-   Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs
+    -   2015 ICLR
+    -   https://arxiv.org/abs/1412.7062
+
+#   Transformers
 -   Swin UNETR: Swin Transformers for Semantic Segmentation of Brain Tumors in MRI Images
     -   https://arxiv.org/abs/2201.01266
 
@@ -7,6 +22,7 @@
     -   2022 WACV
     -   https://arxiv.org/abs/2103.10504
 
+#   UNet
 -   Attention U-Net: Learning Where to Look for the Pancreas
     -   https://arxiv.org/abs/1804.03999
 
