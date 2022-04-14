@@ -1,5 +1,8 @@
 # This folder contains UNet related papers.
 
+-   Swin UNETR: Swin Transformers for Semantic Segmentation of Brain Tumors in MRI Images
+    -   https://arxiv.org/abs/2201.01266
+
 -   UNETR: Transformers for 3D Medical Image Segmentation
     -   2022 WACV
     -   https://arxiv.org/abs/2103.10504
