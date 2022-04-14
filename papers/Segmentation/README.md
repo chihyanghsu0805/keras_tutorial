@@ -1,4 +1,4 @@
-# This folder contains UNet related papers.
+# This folder contains Segmentation related papers.
 
 #   Deeplab
 
