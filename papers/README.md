@@ -72,6 +72,29 @@ CVPR:
         - https://openaccess.thecvf.com/content_cvpr_2016/papers/Zhou_Learning_Deep_Features_CVPR_2016_paper.pdf
         - https://github.com/zhoubolei/CAM
 
+-   Batch Normalization
+    -   Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift
+    -   https://arxiv.org/abs/1502.03167
+    -   2015 ICML
+
+-   Layer Normalization
+    -   Layer Normalization
+    -   https://arxiv.org/abs/1607.06450
+
+-   Group Normalization
+    -   Group Normalization
+    -   https://arxiv.org/abs/1803.08494
+    -   ECCV 2018
+
+Instance Normalization: The Missing Ingredient for Fast Stylization
+    -   https://arxiv.org/abs/1607.08022
+
+
+-   Weight Standardization
+    Micro-Batch Training with Batch-Channel Normalization and Weight Standardization
+    https://arxiv.org/abs/1903.10520
+    
+
 Google AI Blog:
 - Accurate Alpha Matting for Portrait Mode Selfies on Pixel 6
     - https://ai.googleblog.com/2022/01/accurate-alpha-matting-for-portrait.html
