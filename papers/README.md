@@ -1,6 +1,11 @@
 This folder contains papers in deep learning.
 Related works are grouped in individual folders.
 
+ECCV:
+-   2020
+    -   Big Transfer (BiT): General Visual Representation Learning
+        -   https://arxiv.org/abs/1912.11370
+
 ICLR:
 - 2022:
     - Natural Language Descriptions of Deep Visual Features
@@ -45,6 +50,10 @@ NIPS:
         - https://arxiv.org/abs/2011.05429
 
 CVPR:
+-   2022:
+    -   LiT: Zero-Shot Transfer with Locked-image text Tuning
+        -   https://arxiv.org/abs/2111.07991
+        
 - 2020:
     - Self-training with Noisy Student improves ImageNet classification
         - https://arxiv.org/abs/1911.04252
