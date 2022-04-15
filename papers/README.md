@@ -94,6 +94,11 @@ Instance Normalization: The Missing Ingredient for Fast Stylization
     Micro-Batch Training with Batch-Channel Normalization and Weight Standardization
     https://arxiv.org/abs/1903.10520
     
+Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks
+    -   NIPS 2016
+    -   https://arxiv.org/pdf/1602.07868.pdf
+
+
 
 Google AI Blog:
 - Accurate Alpha Matting for Portrait Mode Selfies on Pixel 6
