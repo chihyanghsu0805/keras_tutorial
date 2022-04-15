@@ -53,7 +53,7 @@ CVPR:
 -   2022:
     -   LiT: Zero-Shot Transfer with Locked-image text Tuning
         -   https://arxiv.org/abs/2111.07991
-        
+
 - 2020:
     - Self-training with Noisy Student improves ImageNet classification
         - https://arxiv.org/abs/1911.04252
@@ -71,34 +71,6 @@ CVPR:
     - Learning Deep Features for Discriminative Localization
         - https://openaccess.thecvf.com/content_cvpr_2016/papers/Zhou_Learning_Deep_Features_CVPR_2016_paper.pdf
         - https://github.com/zhoubolei/CAM
-
--   Batch Normalization
-    -   Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift
-    -   https://arxiv.org/abs/1502.03167
-    -   2015 ICML
-
--   Layer Normalization
-    -   Layer Normalization
-    -   https://arxiv.org/abs/1607.06450
-
--   Group Normalization
-    -   Group Normalization
-    -   https://arxiv.org/abs/1803.08494
-    -   ECCV 2018
-
-Instance Normalization: The Missing Ingredient for Fast Stylization
-    -   https://arxiv.org/abs/1607.08022
-
-
--   Weight Standardization
-    Micro-Batch Training with Batch-Channel Normalization and Weight Standardization
-    https://arxiv.org/abs/1903.10520
-    
-Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks
-    -   NIPS 2016
-    -   https://arxiv.org/pdf/1602.07868.pdf
-
-
 
 Google AI Blog:
 - Accurate Alpha Matting for Portrait Mode Selfies on Pixel 6
