@@ -57,7 +57,7 @@ Another challenge of DNNS is the vanishing / exploding gradients due to the many
   However, evidences show that Batch Normalization may induce `severe gradient explosion` at initialization. Batch norm also incurs inter-device synchronization
 cost and the need for running statistics limits transfer learning. [1]
 
- There are also variants of normalization, such as `instance normalization`, 'layer normalization`, and `group normalization`.
+ There are also variants of normalization, such as `instance normalization`, `layer normalization`, and `group normalization`.
 
 [1] Kolesnikov, A., Beyer, L., Zhai, X., Puigcerver, J., Yung, J., Gelly, S. and Houlsby, N., 2020, August. Big transfer (bit): General visual representation learning. In European conference on computer vision (pp. 491-507). Springer, Cham.
 
