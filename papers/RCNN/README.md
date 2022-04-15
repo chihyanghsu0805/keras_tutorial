@@ -14,3 +14,8 @@
 - Mask R-CNN
     - 2017 ICCV
     - https://arxiv.org/abs/1703.06870
+
+-   Focal Loss for Dense Object Detection
+    - 2017 ICCV
+    - https://arxiv.org/abs/1708.02002
+    
