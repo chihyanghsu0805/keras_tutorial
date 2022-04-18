@@ -1,6 +1,6 @@
 #   Neural Networks (NN):
 
-NNs consists of layers which is a collection of units / neurons. Each unit represents a parameter, and the connections between units are the weights. NNs are often represented by `computational graphs`. NNs with multi-layers are also known as `Multilayer Perceptron (MLP)` and the input layer is usually not counted. Conventioally, weights are represented using `w and b`. NNs increase model capacity by increasing number of layers (depth) and number of units (width). Typically, the input layer is visualized as the bottom layer and output layer on top. In-between layers are called `hidden layers`. NNs with multiple hidden layers are referred to as Deep Neural Networks (DNN). Layers with all units connected are know as `fully connected / dense` layers.
+NNs consists of layers which is a collection of units / neurons. Each unit represents a parameter, and the connections between units are the weights. NNs are often represented by `computational graphs`. NNs with multi-layers are also known as `Multilayer Perceptron (MLP)` and the input layer is usually not counted. Conventionally, weights are represented using `w and b`. NNs increase model capacity by increasing number of layers (depth) and number of units (width). Typically, the input layer is visualized as the bottom layer and output layer on top. In-between layers are called `hidden layers`. NNs with multiple hidden layers are referred to as Deep Neural Networks (DNN). Layers with all units connected are know as `fully connected / dense` layers.
 
 ##  Initialization
 
