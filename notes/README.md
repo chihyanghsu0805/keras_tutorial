@@ -151,7 +151,7 @@ The most common way to address high bias is to increase the hypothesis space or 
 
 The relationship between bias and variance is often seen as a trade-off. But it is more of finding the optimal model capacity so that both the bias and generalization error is low.
 
-Bayes (Human) Error <- `(Avoidable) Bias` -> Train Error <- `Variance` -> Dev Error
+Bayes (Human) Error <- `(Avoidable) Bias` -> Train-Dev Error <- `Variance` -> Dev Error
 
 To detect overfitting, it is helpful to monitor the training loss and validation loss while training.
 
