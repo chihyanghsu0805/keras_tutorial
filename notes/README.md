@@ -145,7 +145,7 @@ There are many ways to address overfitting, the most common is `regularization`.
 
 ### Bias / Underfitting
 
-Another property of an estimator is the `bias`, it can be described as how much the estimator differs from the truth. When a model has high bias, it means the model is fitting the traing set poorly, also known as `underfitting`.
+Another property of an estimator is the `bias`, it can be described as how much the estimator differs from the truth. When a model has high bias, it means the model is fitting the train set poorly, also known as `underfitting`.
 
 The most common way to address high bias is to increase the hypothesis space or increase model capacity. This can be done by `adding more features`, or `build bigger models` in neural network. The downside is the risk of overfitting.
 
