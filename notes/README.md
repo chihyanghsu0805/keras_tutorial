@@ -139,7 +139,7 @@ Build the first system quickly then iterate.
 
 ### Variance / Overfitting
 
-`Overfitting` happens when the model capacity is big enough and memorizes the train set. When tested with the dev or test set, the perfomance drops significantly and is therfore not useful. Overfitting is referred to model having `high variance`, with variance being a property of an estimator. It can be described as how much the estimator varies as a function of a data sample.
+`Overfitting` happens when the model capacity is big enough and memorizes the train set. When tested with the dev or test set, the performance drops significantly and is therfore not useful. Overfitting is referred to model having `high variance`, with variance being a property of an estimator. It can be described as how much the estimator varies as a function of a data sample.
 
 There are many ways to address overfitting, the most common is `regularization`. Increasing the dataset size can also help the model reach statistical efficiency.
 
