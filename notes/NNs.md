@@ -24,7 +24,7 @@ A single layer is represented as A = g(Z), Z = WX + b with the following shapes
 -   n = number of features / filters
 -   m = number of samples
 -   X (n<sub>i</sub>, m), note this is different in conventional design matrix
--   W (n</sub>i+1</sub>, n<sub>i</sub>)
+-   W (n<sub>i+1</sub>, n<sub>i</sub>)
 -   Z (n<sub>i+1</sub>, m)
 -   A (n<sub>i+1</sub>, m)
 -   b (n<sub>i</sub>, 1) but `broadcasted` to (n<sub>i</sub>, m)
