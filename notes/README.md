@@ -30,9 +30,15 @@ ML problems can be catgorized into the following,
 
 ## Data
 
-Typically, there are two types of data, `structured` and `unstructured`. Structured data refers to data that is represented with rows as subjects and columns as features. Unstructured data refers to data that do not follow this format, such as images and audios.
+Typically, there are two types of data, `structured` and `unstructured`.
 
-To build a good solution to a ML problem, it is important to understand the data, or `exploratory data analysis (EDA)`. In EDA, it is typical to collect representative statistics (such as mean, minimum, maximum, etc) for each feature and detect outliers and errors. Histogram visualization also helps with understanding the feature distribution to determine possible means to normalize the features. After understanding the data, various approaches can be applied to the features to help with model training. For example, normalizing the features allows certain algorithms to converge faster. These approaches are referred to as `feature engineering`.
+Structured data refers to data that is represented with rows as subjects and columns as features.
+
+Unstructured data refers to data that do not follow this format, such as images and audios.
+
+To build a good solution to a ML problem, it is important to understand the data, or `exploratory data analysis (EDA)`. In EDA, it is typical to collect representative statistics (such as mean, minimum, maximum, etc) for each feature and detect outliers and errors. Histogram visualization also helps with understanding the feature distribution to determine possible ways to normalize the features.
+
+After understanding the data, various approaches can be applied to the features to help with model training. For example, normalizing the features allows certain algorithms to converge faster. These approaches are referred to as `feature engineering`.
 
 ### Feature Engineering
 
