@@ -52,7 +52,7 @@ Another challenge of DNNS is the vanishing / exploding gradients due to the many
 
 ## Batch Normalization
 
- `Batch Normalization` helps with vanishing / exploding gradients as well as `internal covariate shift` due to random initialization. Bach norm works by making the weights in later layers more robust to chnages in earlier layer. The normalization parameters can be learned so that `batchnorm is not always zero mean and unit variance`. During training, batchnorm is estimated with `exponentially weighted averages`. And at test time, the batchnorm `parameters from training` is used.
+ `Batch Normalization` helps with vanishing / exploding gradients as well as `internal covariate shift` due to random initialization. Bach norm works by making the weights in later layers more robust to chnges in earlier layer. The normalization parameters can be learned so that `batchnorm is not always zero mean and unit variance`. During training, batchnorm is estimated with `exponentially weighted averages`. And at test time, the batchnorm `parameters from training` is used.
  
   However, evidences show that Batch Normalization may induce `severe gradient explosion` at initialization. Batch norm also incurs inter-device synchronization
 cost and the need for running statistics limits transfer learning. [1]
