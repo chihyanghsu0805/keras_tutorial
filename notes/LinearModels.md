@@ -8,7 +8,7 @@
 
 -   `Softmax Regression` is logistic regression with `multi-class` classification, or `multinoulli distribution`. The logits (z, θ<sup>T</sup>x) are exponentialized and normalized so the probabilities sums to 1, (e<sup>θ<sub>i</sub><sup>T</sup>x</sup> / 	Σ<sub>j</sub> e<sup>θ<sub>j</sub><sup>T</sup>x</sup>). The loss function become `categorical cross entropy`. For problems with `multi-class single instance`, softmax is used and `multi-class multi-instance`, logistic regression is used for each instance.
 
--   `Exponential Family` is a family of models that can be factored into P(y; η) = b(y) exp(η<sup>T</sup>T(y)-α(η)), where α is log partition. Examples are `Gaussian`, `Bernoulli`, Poisson, Gamma, Exponential, Beta, Dirichlet. MLE of exponentation is always concave, so covergence is guaranteed with `random initialization`. `Generalized Linear Models (GLMs)` are a set of models that follows the properties:
+-   `Exponential Family` is a family of models that can be factored into P(y; η) = b(y) exp(η<sup>T</sup>T(y)-α(η)), where α is log partition. Examples are `Gaussian`, `Bernoulli`, Poisson, Gamma, Exponential, Beta, Dirichlet. MLE of Exponential Family is always concave, so covergence is guaranteed with `random initialization`. `Generalized Linear Models (GLMs)` are a set of models that follows the properties:
     -   y | x; θ ~ Exponential Family
     -   η = θ<sup>T</sup>x  (linear)
     -   At train time, maximizes log P(y; η). At test time, outputs E[y; η] = h<sub>θ</sub>(x).
