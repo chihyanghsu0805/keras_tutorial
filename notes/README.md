@@ -151,7 +151,7 @@ The most common way to address high bias is to increase the hypothesis space or 
 
 The relationship between bias and variance is often seen as a trade-off. But it is more of finding the optimal model capacity so that both the bias and generalization error is low.
 
-Bayes (Human) Error <- `(Avoidable) Bias` -> Train-Dev Error <- `Variance` -> Dev Error
+Bayes (Human) Error <- `(Avoidable) Bias` -> Train Error <- `Variance` -> Dev Error
 
 To detect overfitting, it is helpful to monitor the training loss and validation loss while training.
 
@@ -159,7 +159,7 @@ To detect overfitting, it is helpful to monitor the training loss and validation
 
 Due to difficulties in data collection, train and dev set may have different distributions. For example, many pictures maybe collected from the web (200k) but not as many from mobile apps (10k). Random sampling may not work well. A better options is 200k+5k, 2.5k, 2.5k for train / dev / test respectively. Another example is Speech Recognition inside Vehicles. In this scenario, an additional set, `train-dev set`, is useful for analyzing the effect of distribution mismatch. Train-dev set is not used in training.
 
-Bayes (Human) Error <- `(Avoidable) Bias` -> Train Error <- `Variance` -> Dev Error <- `Data Mismatch` -> Dev Error
+Bayes (Human) Error <- `(Avoidable) Bias` -> Train Error <- `Variance` -> Train-Dev Error <- `Data Mismatch` -> Dev Error
 
 Sometimes, dev error may be lower than train error when the `dev set is easier` than the train set.
 
