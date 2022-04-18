@@ -135,7 +135,7 @@ Build the first system quickly then iterate.
 
 ### Bayes Error
 
-`Bayes Error` is the lowest achievable error and is used to determine whether model is underfitting. `Human Performance` is often used as a surrogate for Bayes Error.
+`Bayes Error` is the lowest achievable error and is used to determine whether model is underfitting / high bias. `Human Performance` is often used as a surrogate for Bayes Error.
 
 ### Variance / Overfitting
 
