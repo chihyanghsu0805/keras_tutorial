@@ -6,7 +6,7 @@
     -   https://github.com/facebookresearch/suncet
     -   https://ai.facebook.com/blog/dino-paws-computer-vision-with-self-supervised-transformers-and-10x-more-efficient-training/
 
-=   Semi-Supervised Learning of Visual Features by Non-Parametrically Predicting View Assignments with Support Samples
+-   Semi-Supervised Learning of Visual Features by Non-Parametrically Predicting View Assignments with Support Samples
     -   2021 ICCV
     -   https://arxiv.org/abs/2104.13963
     -   https://github.com/facebookresearch/dino    
