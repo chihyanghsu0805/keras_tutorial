@@ -88,4 +88,4 @@ Machine translation models the P(y<sup>1</sup>...y<sup>t</sup> | x). By design, 
 `Bleu Score` is commonly used for evaluating translation. Bleu stands for Bilingual Evaluation Understudy.
 The `precision` is defined as (#occurence in truth) / (#occurence in prediction). `Brevity Penalty` is used to penalize short sentences.
 
-`Attention Model` us used to overcome problems with long sequences. It multiplies the activation by `attention α` where the sum of attention is 1.
+`Attention Model` is used to overcome problems with long sequences. It multiplies the activation by `attention α` where the sum of attention is 1.
