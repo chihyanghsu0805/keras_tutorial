@@ -296,3 +296,4 @@ A common error is `Mislabeled Samples`. For big enough train set, it may not pay
 -   `Multi-Task Learning` is usefful when a set of tasks could share lower level features, for example obeject detection with multiple labels in image. The label distribution should be similar, and the dataset should be big enough.
 
 -   `End-to-End learning` is helpful when each of the `subtasks are easier` and there are `more data for subtasks`.
+-   `Dnsity Estimation`
