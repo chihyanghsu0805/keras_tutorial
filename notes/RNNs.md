@@ -20,7 +20,7 @@ Comapred to a standard NN which units are connectly vertically, RNNs also connec
 
 ##  Sequence Generation
 
-An example of sequence generating model is `Naive Bayes` which models P(sentence) as a conditionally independent distribution p(y<sup>1</sup> ... y<sup>T</sup>). Using a RNN model, the inital input can be a random number and generates y_hat<sup>1</sup> which is used as the input for the second unit. It can woth at a `word-level` or `character-level`, in which longer voabluaries may suffer from `Long-Range Dependencies`.
+An example of sequence generating model is `Naive Bayes` which models P(sentence) as a conditionally independent distribution p(y<sup>1</sup> ... y<sup>T</sup>). Using a RNN model, the inital input can be a random number and generates y_hat<sup>1</sup> which is used as the input for the second unit. It can work at a `word-level` or `character-level`, in which longer vocabularies may suffer from `Long-Range Dependencies`.
 
 ##  Long-Range Dependencies
 
