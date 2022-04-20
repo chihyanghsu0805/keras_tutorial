@@ -250,9 +250,10 @@ The following `non-parametric` models are commonly used for classification, regr
 
 A common hyperparamter for both models is the `number of clusters, k`. In KNN, since the problem is supervised, prediction metrics can be used to inform the optimal k. In `clustering`, various techniques can be used to choose the optimal number of clusters,
 
--   `Visualization`: `Silhouette plots` provides the inter-cluster similarity for each cluster. `K v.s. Total Distance` provides when the infliction point (slope > -1, theta > 135 degree) occurs
+-   `Silhouette plots` provides the inter-cluster similarity for each cluster.
+-   `K v.s. Total Distance` provides when the infliction point (slope > -1, theta > 135 degree) occurs
 -   `Cardinality` is the number of example per cluster
--   `Magnitude` is the sum of distance pre cluster
+-   `Magnitude` is the sum of distance per cluster
 -   `Performance of Downstream Analysis`
 
 ### Optimizers
