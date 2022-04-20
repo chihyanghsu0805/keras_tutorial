@@ -6,7 +6,7 @@ CNNs are used for many `computer vision` tasks, such as object detection and seg
 
 -   Images usually have `channels` (RGB) as an additional dimension. It is important to match the kernel dimension and number with the channels.
 
--   `Weights` are stored within the kernels and each kernel stores one `bias`. Therefore, the number of parameters # #Filters x (kernel size) + #Filters.
+-   `Weights` are stored within the kernels and each kernel stores one `bias`. Therefore, the number of parameters are #Filters x (kernel size) + #Filters.
 
 -   Another special layer is `Pooling`, which `average pooling` takes the average in th window and `max pooling` takes the max in the window.
 
