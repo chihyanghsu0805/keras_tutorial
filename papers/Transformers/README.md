@@ -6,6 +6,12 @@ This folder contains Transformers papers.
   - https://arxiv.org/pdf/2010.11929
   - https://github.com/google-research/vision_transformer
 
+# DETR
+- End-to-End Object Detection with Transformers
+  - ECCV 2020
+  - https://arxiv.org/abs/2005.12872
+  - https://github.com/facebookresearch/detr
+
 # SWIN
 - Swin Transformer V2: Scaling Up Capacity and Resolution
   - CVPR 2022
