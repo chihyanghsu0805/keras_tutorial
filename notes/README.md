@@ -30,9 +30,15 @@ ML problems can be catgorized into the following,
 
 ## Data
 
-Typically, there are two types of data, `structured` and `unstructured`. Structured data refers to data that is represented with rows as subjects and columns as features. Unstructured data refers to data that do not follow this format, such as images and audios.
+Typically, there are two types of data, `structured` and `unstructured`.
 
-To build a good solution to a ML problem, it is important to understand the data, or `exploratory data analysis (EDA)`. In EDA, it is typical to collect representative statistics (such as mean, minimum, maximum, etc) for each feature and detect outliers and errors. Histogram visualization also helps with understanding the feature distribution to determine possible means to normalize the features. After understanding the data, various approaches can be applied to the features to help with model training. For example, normalizing the features allows certain algorithms to converge faster. These approaches are referred to as `feature engineering`.
+Structured data refers to data that is represented with rows as subjects and columns as features.
+
+Unstructured data refers to data that do not follow this format, such as images and audios.
+
+To build a good solution to a ML problem, it is important to understand the data, or `exploratory data analysis (EDA)`. In EDA, it is typical to collect representative statistics (such as mean, minimum, maximum, etc) for each feature and detect outliers and errors. Histogram visualization also helps with understanding the feature distribution to determine possible ways to normalize the features.
+
+After understanding the data, various approaches can be applied to the features to help with model training. For example, normalizing the features allows certain algorithms to converge faster. These approaches are referred to as `feature engineering`.
 
 ### Feature Engineering
 
@@ -123,23 +129,23 @@ Generally in ML, the chains of assumption follows,
 -   Fit train set well ~ human level performance (bigger network, different alogrithm)
 -   Fit dev set well (regularization, bigger train set)
 -   Fit test set wll (bigger dev set)
--   Real World Data (change dev set of cost function)
+-   Real World Data (change dev set or cost function)
 
 Build the first system quickly then iterate.
 
 ### Bayes Error
 
-`Bayes Error` is the lowest achievable error and is used to determine whether model is underfitting. `Human Performance` is often used as a surrogate for Bayes Error.
+`Bayes Error` is the lowest achievable error and is used to determine whether model is underfitting / high bias. `Human Performance` is often used as a surrogate for Bayes Error.
 
 ### Variance / Overfitting
 
-`Overfitting` happens when the model capacity is big enough and memorizes the train set. When tested with the dev or test set, the perfomance drops significantly and is therfore not useful. Overfitting is referred to model having `high variance`, with variance being a property of an estimator. It can be described as how much the estimator varies as a function of a data sample.
+`Overfitting` happens when the model capacity is big enough and memorizes the train set. When tested with the dev or test set, the performance drops significantly and is therfore not useful. Overfitting is referred to model having `high variance`, with variance being a property of an estimator. It can be described as how much the estimator varies as a function of a data sample.
 
 There are many ways to address overfitting, the most common is `regularization`. Increasing the dataset size can also help the model reach statistical efficiency.
 
 ### Bias / Underfitting
 
-Another property of an estimator is the `bias`, it can be described as how much the estimator differs from the truth. When a model has high bias, it means the model is fitting the traing set poorly, also known as `underfitting`.
+Another property of an estimator is the `bias`, it can be described as how much the estimator differs from the truth. When a model has high bias, it means the model is fitting the train set poorly, also known as `underfitting`.
 
 The most common way to address high bias is to increase the hypothesis space or increase model capacity. This can be done by `adding more features`, or `build bigger models` in neural network. The downside is the risk of overfitting.
 
@@ -153,7 +159,7 @@ To detect overfitting, it is helpful to monitor the training loss and validation
 
 Due to difficulties in data collection, train and dev set may have different distributions. For example, many pictures maybe collected from the web (200k) but not as many from mobile apps (10k). Random sampling may not work well. A better options is 200k+5k, 2.5k, 2.5k for train / dev / test respectively. Another example is Speech Recognition inside Vehicles. In this scenario, an additional set, `train-dev set`, is useful for analyzing the effect of distribution mismatch. Train-dev set is not used in training.
 
-Bayes (Human) Error <- `(Avoidable) Bias` -> Train Error <- `Variance` -> Dev Error <- `Data Mismatch` -> Dev Error
+Bayes (Human) Error <- `(Avoidable) Bias` -> Train Error <- `Variance` -> Train-Dev Error <- `Data Mismatch` -> Dev Error
 
 Sometimes, dev error may be lower than train error when the `dev set is easier` than the train set.
 
@@ -227,7 +233,7 @@ Generative models find the joint probability of y and x P(y, x). From the defini
 
 -   `Gaussian Discriminant Analysis (GDA)`: Using binary classification as an example to compare with logistic regression, GDA assumes x | y ~ N(μ, Σ) with different μ for y = 0 and 1 but identical Σ (Different Σ results in nonlinear decision boundary) and y is Bernoulli φ. It optimizes for φ, μ<sub>0</sub>, μ<sub>1</sub> and Σ. Under MLE, φ is the ratio of positive samples to all, μ is the average of all postive / negative samples, and Σ is computed with the estimated means. Due to the `stronger assumption`, GDA requires less data but only works when the data is Gaussian. Whereas Logistic Regression has weaker assumption and works with any distribution.
 
--   `Naive Bayes` is another popular generative model, especially in sequence models. It asuumes Xs are `conditionally independent` given y, P(x<sub>1</sub>, ..., x<sub>n</sub> | y)  = P(x<sub>1</sub> | y) P(x<sub>2</sub> | x<sub>1</sub>, y) P(x<sub>3</sub> | x<sub>2</sub> x<sub>1</sub>, y)... = P(x<sub>1</sub> | y) P(x<sub>2</sub> | y) ... P(x<sub>n</sub> |y). `Laplace Smoothing` is used to avoid zero probabilities.
+-   `Naive Bayes` is another popular generative model, especially in sequence models. It assumes Xs are `conditionally independent` given y, P(x<sub>1</sub>, ..., x<sub>n</sub> | y)  = P(x<sub>1</sub> | y) P(x<sub>2</sub> | x<sub>1</sub>, y) P(x<sub>3</sub> | x<sub>2</sub> x<sub>1</sub>, y)... = P(x<sub>1</sub> | y) P(x<sub>2</sub> | y) ... P(x<sub>n</sub> |y). `Laplace Smoothing` is used to avoid zero probabilities.
 
 -   [`Generative Adversarial Networks (GANs)`](./GANs.md)
 -   [`Autoencoders (AEs)`](./AE.md)
@@ -244,9 +250,10 @@ The following `non-parametric` models are commonly used for classification, regr
 
 A common hyperparamter for both models is the `number of clusters, k`. In KNN, since the problem is supervised, prediction metrics can be used to inform the optimal k. In `clustering`, various techniques can be used to choose the optimal number of clusters,
 
--   `Visualization`: `Silhouette plots` provides the inter-cluster similarity for each cluster. `K v.s. Total Distance` provides when the infliction point (slope > -1, theta > 135 degree) occurs
+-   `Silhouette plots` provides the inter-cluster similarity for each cluster.
+-   `K v.s. Total Distance` provides when the infliction point (slope > -1, theta > 135 degree) occurs
 -   `Cardinality` is the number of example per cluster
--   `Magnitude` is the sum of distance pre cluster
+-   `Magnitude` is the sum of distance per cluster
 -   `Performance of Downstream Analysis`
 
 ### Optimizers
@@ -289,3 +296,4 @@ A common error is `Mislabeled Samples`. For big enough train set, it may not pay
 -   `Multi-Task Learning` is usefful when a set of tasks could share lower level features, for example obeject detection with multiple labels in image. The label distribution should be similar, and the dataset should be big enough.
 
 -   `End-to-End learning` is helpful when each of the `subtasks are easier` and there are `more data for subtasks`.
+-   `Dnsity Estimation`

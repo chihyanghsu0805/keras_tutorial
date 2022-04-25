@@ -2,7 +2,7 @@
 
 GANs train two models,
 
--   `Generator G` generates plausible data that acts as negative training sample for discriminator. It samples from random noise to produce a generated output to be classified by the discriminator. The generator loss is computed and backpropagetd but `only the generator is updated`.
+-   `Generator G` generates plausible data that acts as negative training sample for discriminator. It samples from random noise to produce a generated output to be classified by the discriminator. The generator loss is computed and backpropagated but `only the generator is updated`.
 
 -   `Discriminator D` distinguish fake fom real and penalizes generator for implausible data. The discriminator classifies real and fake data and is penalizaed for misclassification. The parameters are updated thorugh backpropagation.
 

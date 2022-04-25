@@ -1,10 +1,10 @@
 #   Neural Networks (NN):
 
-NNs consists of layers which is a collection of units / neurons. Each unit represents a parameter, and the connections between units are the weights. NNs are often represented by `computational graphs`. NNs with multi-layers are also known as `Multilayer Perceptron (MLP)` and the input layer is usually not counted. Conventioally, weights are represented using `w and b`. NNs increase model capacity by increasing number of layers (depth) and number of units (width). Typically, the input layer is visualized as the bottom layer and output layer on top. In-between layers are called `hidden layers`. NNs with multiple hidden layers are referred to as Deep Neural Networks (DNN). Layers with all units connected are know as `fully connected / dense` layers.
+NNs consists of layers which is a collection of units / neurons. Each unit represents a parameter, and the connections between units are the weights. NNs are often represented by `computational graphs`. NNs with multi-layers are also known as `Multilayer Perceptron (MLP)` and the input layer is usually not counted. Conventionally, weights are represented using `w and b`. NNs increase model capacity by increasing number of layers (depth) and number of units (width). Typically, the input layer is visualized as the bottom layer and output layer on top. In-between layers are called `hidden layers`. NNs with multiple hidden layers are referred to as Deep Neural Networks (DNN). Layers with all units connected are known as `fully connected / dense` layers.
 
 ##  Initialization
 
-Initialization is extremely import for NNs. The initial parameters need to `break symmetry` to ensure each unit learns different functions. Typically biases are set to constants and weights are randomly sampled form a Gaussian or Uniform distribution. The `scale of the distribution` has a large impact as well. If the initial values are too big, gradients may explode. Likewise initial values too small, gradients may vanish. Generally, the wights are initialized to have equal variance. the Below are some common initializations,
+Initialization is extremely import for NNs. The initial parameters need to `break symmetry` to ensure each unit learns different functions. Typically biases are set to constants and weights are randomly sampled form a Gaussian or Uniform distribution. The `scale of the distribution` has a large impact as well. If the initial values are too big, gradients may explode. Likewise initial values too small, gradients may vanish. Generally, the wights are initialized to have equal variance. Below are some common initializations,
 
 -   (Xavier) Glorot and Bengio Uniform: U[-1/sqrt(n), 1/sqrt(n)]
 -   Xavier Uniform: U[-sqrt(6)/sqrt(m+n), sqrt(6)/sqrt(m+n)]
@@ -24,7 +24,7 @@ A single layer is represented as A = g(Z), Z = WX + b with the following shapes
 -   n = number of features / filters
 -   m = number of samples
 -   X (n<sub>i</sub>, m), note this is different in conventional design matrix
--   W (n</sub>i+1</sub>, n<sub>i</sub>)
+-   W (n<sub>i+1</sub>, n<sub>i</sub>)
 -   Z (n<sub>i+1</sub>, m)
 -   A (n<sub>i+1</sub>, m)
 -   b (n<sub>i</sub>, 1) but `broadcasted` to (n<sub>i</sub>, m)
@@ -52,7 +52,7 @@ Another challenge of DNNS is the vanishing / exploding gradients due to the many
 
 ## Batch Normalization
 
- `Batch Normalization` helps with vanishing / exploding gradients as well as `internal covariate shift` due to random initialization. Barch norm works by making the weights in later layers more robust to chnages in earlier layer. The normalization parameters can be learned so that `batchnorm is not always zero mean and unit variance`. During training, batchnorm is estimated with `exponentially weighted averages`. And at test time, the batchnorm `parameters from training` is used.
+ `Batch Normalization` helps with vanishing / exploding gradients as well as `internal covariate shift` due to random initialization. Bach norm works by making the weights in later layers more robust to chnges in earlier layer. The normalization parameters can be learned so that `batchnorm is not always zero mean and unit variance`. During training, batchnorm is estimated with `exponentially weighted averages`. And at test time, the batchnorm `parameters from training` is used.
  
   However, evidences show that Batch Normalization may induce `severe gradient explosion` at initialization. Batch norm also incurs inter-device synchronization
 cost and the need for running statistics limits transfer learning. [1]
