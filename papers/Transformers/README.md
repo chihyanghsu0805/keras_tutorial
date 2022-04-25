@@ -1,5 +1,11 @@
 This folder contains Transformers papers.
 
+# Transformer
+- Attention Is All You Need
+  - NIPS 2017
+  - https://arxiv.org/abs/1706.03762
+  - https://github.com/tensorflow/tensor2tensor
+
 # ViT
 - An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale
   - ICLR 2021
