@@ -12,10 +12,6 @@ ICLR:
         - https://arxiv.org/abs/2201.11114
     -   Pix2Seq: A Language Modeling Framework for Object Detection
         -   https://arxiv.org/pdf/2109.10852.pdf
-- 2021:
-    - An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale
-        - https://arxiv.org/pdf/2010.11929
-        - https://github.com/google-research/vision_transformer
 
 - 2018:
     - Graph Attention Networks
