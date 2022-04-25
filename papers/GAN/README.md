@@ -25,3 +25,8 @@
 - Unsupervised Representation Learning with Deep Convolutional Generative Adversarial Networks
     - 2016 ICLR
     - https://arxiv.org/abs/1511.06434
+
+## SAGAN
+-   Self-Attention Generative Adversarial Networks
+    -   https://arxiv.org/abs/1805.08318
+    -   https://github.com/brain-research/self-attention-gan
