@@ -10,11 +10,18 @@ ICLR:
 - 2022:
     - Natural Language Descriptions of Deep Visual Features
         - https://arxiv.org/abs/2201.11114
+    -   Pix2Seq: A Language Modeling Framework for Object Detection
+        -   https://arxiv.org/pdf/2109.10852.pdf
+- 2021:
+    - An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale
+        - https://arxiv.org/pdf/2010.11929
+        - https://github.com/google-research/vision_transformer
+
 - 2018:
     - Graph Attention Networks
         - https://arxiv.org/abs/1710.10903
         - https://github.com/PetarV-/GAT
-        -
+        
 CogSci:
 - 2021:
     - Are Convolutional Neural Networks or Transformers more like human vision?

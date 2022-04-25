@@ -18,4 +18,7 @@
 -   Focal Loss for Dense Object Detection
     - 2017 ICCV
     - https://arxiv.org/abs/1708.02002
-    
+
+-   Feature Pyramid Networks for Object Detection
+    -   2017 CVPR
+    -   https://arxiv.org/abs/1612.03144

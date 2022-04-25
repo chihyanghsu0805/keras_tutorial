@@ -14,14 +14,6 @@
     -   2015 ICLR
     -   https://arxiv.org/abs/1412.7062
 
-#   Transformers
--   Swin UNETR: Swin Transformers for Semantic Segmentation of Brain Tumors in MRI Images
-    -   https://arxiv.org/abs/2201.01266
-
--   UNETR: Transformers for 3D Medical Image Segmentation
-    -   2022 WACV
-    -   https://arxiv.org/abs/2103.10504
-
 #   UNet
 -   Attention U-Net: Learning Where to Look for the Pancreas
     -   https://arxiv.org/abs/1804.03999
