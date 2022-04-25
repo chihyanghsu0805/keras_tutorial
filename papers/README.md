@@ -22,7 +22,7 @@ ICLR:
     - Graph Attention Networks
         - https://arxiv.org/abs/1710.10903
         - https://github.com/PetarV-/GAT
-        -
+        
 CogSci:
 - 2021:
     - Are Convolutional Neural Networks or Transformers more like human vision?
