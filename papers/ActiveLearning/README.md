@@ -4,7 +4,7 @@ This folder contains Active Learning papers.
   - https://arxiv.org/abs/1807.07356
 
 - Exploring uncertainty measures in deep networks for multiple sclerosis lesion detection and segmentation
-  - https://www.sciencedirect.com/science/article/abs/pii/S1361841519300994
+  - https://arxiv.org/abs/1808.01200
 
 - MONAI Label: A framework for AI-assisted Interactive Labeling of 3D Medical Images
   - https://arxiv.org/abs/2203.12362
