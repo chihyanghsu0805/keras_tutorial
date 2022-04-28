@@ -13,7 +13,7 @@ Including,
 
 ## [Problem Framing](./Problem.md)
 ## [Data](./Data.md)
-## [Model Building]
+## Model Building
 -   [Models](./Models.md)
 -   [Generalization](./Generalization.md)
 -   [Regularization](./Regularization.md)
