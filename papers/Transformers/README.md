@@ -7,6 +7,10 @@ This folder contains Transformers papers.
   - https://github.com/tensorflow/tensor2tensor
 
 # ViT
+- Training Data-Efficient Image Transformers & Distillation Through Attention
+  - ICML 2021
+  - https://arxiv.org/abs/2012.12877 
+
 - How to train your ViT? Data, Augmentation, and Regularization in Vision Transformers
   - https://arxiv.org/abs/2106.10270
 
