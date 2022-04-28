@@ -5,6 +5,9 @@ ECCV:
 -   2020
     -   Big Transfer (BiT): General Visual Representation Learning
         -   https://arxiv.org/abs/1912.11370
+-   2016
+    -   Deep Networks with Stochastic Depth
+        -   https://arxiv.org/abs/1603.09382
 
 ICLR:
 - 2022:
@@ -59,6 +62,10 @@ CVPR:
     - Bringing Old Photos Back to Life
         - https://arxiv.org/abs/2004.09484
         - https://github.com/microsoft/Bringing-Old-Photos-Back-to-Life
+
+    -   RandAugment: Practical automated data augmentation with a reduced search space
+        -   https://arxiv.org/abs/1909.13719
+        -   https://github.com/tensorflow/tpu/tree/master/models/official/efficientnet
 
 - 2016:
     - Learning Deep Features for Discriminative Localization
