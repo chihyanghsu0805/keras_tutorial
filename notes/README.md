@@ -177,11 +177,13 @@ Two regularization terms are commonly used,
 
 Besides regularization, other techniques can help detect and reduce overfitting.
 
--   Data Augmentation: applying some tranformations (flipping, rotation, color shift) to the input allows the model to learn from a larger sample size. `Statistic Consistency` states that with infinite sample size, the variance should be 0
+-   Data Augmentation: applying some tranformations (flipping, rotation, color shift) to the input allows the model to learn from a larger sample size. `Statistic Consistency` states that with infinite sample size, the variance should be 0. `RandAugment` remove the need for a separate search phase on a proxy task. [1]
 -   Early Stopping: which the user defines criteria for stopping the model training
 -   SVM utilizes the C coefficient along with L1 / L2
 -   Decision Tress can be regularized by `pruning`, tree `depth` and number of trees
 -   Neural networks can use `Dropout` layers
+
+[1] Cubuk, E.D., Zoph, B., Shlens, J. and Le, Q.V., 2020. Randaugment: Practical automated data augmentation with a reduced search space. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops (pp. 702-703).
 
 ### Metrics
 
