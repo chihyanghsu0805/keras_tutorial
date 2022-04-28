@@ -65,8 +65,13 @@ cost and the need for running statistics limits transfer learning. [1]
 
 NNs have a special regularization technique `Dropout` which randomly drops units during training. It has the effect of evenly distributing the weights throughout the network and `not rely on specific units`. With wider layers, the keep probability should be lower. At test time, dropout is turned off.
 
+`Stochastic Depth` [1] is another regularization technique for NNs. 
+
 L2 regularization in NNs is the `Frobenius Norm` of the weight matrix W and is often referred to as `weight decay` due to the refactoring of terms in gradient descent.
+
+[1] Huang, G., Sun, Y., Liu, Z., Sedra, D. and Weinberger, K.Q., 2016, October. Deep networks with stochastic depth. In European conference on computer vision (pp. 646-661). Springer, Cham.
 
 ##  [`Convolution Neural Networks (CNNs)`](./CNNs.md)
 
 ##  [`Recurrent Neural Networks (CNNs)`](./RNNs.md)
+
