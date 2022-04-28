@@ -5,33 +5,29 @@ ECCV:
 -   2020
     -   Big Transfer (BiT): General Visual Representation Learning
         -   https://arxiv.org/abs/1912.11370
+-   2016
+    -   Deep Networks with Stochastic Depth
+        -   https://arxiv.org/abs/1603.09382
 
 ICLR:
 - 2022:
     - Natural Language Descriptions of Deep Visual Features
         - https://arxiv.org/abs/2201.11114
-
-- 2021:
-    - An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale
-        - https://arxiv.org/pdf/2010.11929
-        - https://github.com/google-research/vision_transformer
+    -   Pix2Seq: A Language Modeling Framework for Object Detection
+        -   https://arxiv.org/pdf/2109.10852.pdf
 
 - 2018:
     - Graph Attention Networks
         - https://arxiv.org/abs/1710.10903
         - https://github.com/PetarV-/GAT
-        -
+        
 CogSci:
 - 2021:
     - Are Convolutional Neural Networks or Transformers more like human vision?
         - https://arxiv.org/abs/2105.07197
 
 ICCV:
-- 2021:
-    -   Swin Transformer: Hierarchical Vision Transformer using Shifted Windows
-        -   https://arxiv.org/abs/2103.14030
-        -   https://github.com/microsoft/Swin-Transformer
-
+- 2021:    
     - Explaining in Style: Training a GAN to explain a classifier in StyleSpace
         - https://arxiv.org/pdf/2104.13369.pdf
         - https://explaining-in-style.github.io/
@@ -53,7 +49,7 @@ CVPR:
 -   2022:
     -   LiT: Zero-Shot Transfer with Locked-image text Tuning
         -   https://arxiv.org/abs/2111.07991
-        
+
 - 2020:
     - Self-training with Noisy Student improves ImageNet classification
         - https://arxiv.org/abs/1911.04252
@@ -67,38 +63,14 @@ CVPR:
         - https://arxiv.org/abs/2004.09484
         - https://github.com/microsoft/Bringing-Old-Photos-Back-to-Life
 
+    -   RandAugment: Practical automated data augmentation with a reduced search space
+        -   https://arxiv.org/abs/1909.13719
+        -   https://github.com/tensorflow/tpu/tree/master/models/official/efficientnet
+
 - 2016:
     - Learning Deep Features for Discriminative Localization
         - https://openaccess.thecvf.com/content_cvpr_2016/papers/Zhou_Learning_Deep_Features_CVPR_2016_paper.pdf
         - https://github.com/zhoubolei/CAM
-
--   Batch Normalization
-    -   Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift
-    -   https://arxiv.org/abs/1502.03167
-    -   2015 ICML
-
--   Layer Normalization
-    -   Layer Normalization
-    -   https://arxiv.org/abs/1607.06450
-
--   Group Normalization
-    -   Group Normalization
-    -   https://arxiv.org/abs/1803.08494
-    -   ECCV 2018
-
-Instance Normalization: The Missing Ingredient for Fast Stylization
-    -   https://arxiv.org/abs/1607.08022
-
-
--   Weight Standardization
-    Micro-Batch Training with Batch-Channel Normalization and Weight Standardization
-    https://arxiv.org/abs/1903.10520
-    
-Weight Normalization: A Simple Reparameterization to Accelerate Training of Deep Neural Networks
-    -   NIPS 2016
-    -   https://arxiv.org/pdf/1602.07868.pdf
-
-
 
 Google AI Blog:
 - Accurate Alpha Matting for Portrait Mode Selfies on Pixel 6
