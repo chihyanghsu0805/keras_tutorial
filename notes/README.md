@@ -126,7 +126,7 @@ When the dataset is small, `k-fold` cross validation is often used to give a bet
 
 Generally in ML, the chains of assumption follows,
 
--   Fit train set well ~ human level performance (bigger network, different alogrithm)
+-   Fit train set well ~ human level performance (bigger network, different algorithm)
 -   Fit dev set well (regularization, bigger train set)
 -   Fit test set wll (bigger dev set)
 -   Real World Data (change dev set or cost function)
