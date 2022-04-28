@@ -13,10 +13,13 @@ Including,
 # Overview
 
 ` Machine learning is essentially a form of applied statistics with increased emphasis on the use of computers to statistically estimate complicated functions and a decreasd emphasis on proving confidence intervals around these functions.` [1]
+
 ` A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.` [2]
+
 ` What separates machine learning from optimization is that we want the generalization error, also called the test error, to be low as well.` [1]
 
 [1] https://www.deeplearningbook.org/
+
 [2] http://www.cs.cmu.edu/~tom/mlbook.html
 
 ## [Problem Framing](./Problem.md)
