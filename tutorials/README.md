@@ -7,6 +7,11 @@ https://www.tensorflow.org/tutorials
 - Model Understanding
     - Integrated gradients
 
+-   Intro to Autoencoders
+-   Classify text with BERT
+-   Image Super Resolution using ESRGAN
+-   pix2pix: Image-to-image translation with a conditional GAN
+
 # Keras Tutorials
 https://keras.io/examples/
 
