@@ -11,6 +11,9 @@ ECCV:
 
 ICLR:
 - 2022:
+    -   Learning Strides in Convolutional Neural Networks
+        -   https://arxiv.org/abs/2202.01653
+        -   https://github.com/google-research/diffstride
     - ViTGAN: Training GANs with Vision Transformers
         -   https://arxiv.org/abs/2107.04589        -   
     - PolyLoss: A Polynomial Expansion Perspective of Classification Loss Functions
