@@ -21,6 +21,8 @@ ICLR:
         -   https://arxiv.org/pdf/2109.10852.pdf
 
 - 2018:
+    -   Spectral Normalization for Generative Adversarial Networks
+        -   https://arxiv.org/abs/1802.05957
     - Graph Attention Networks
         - https://arxiv.org/abs/1710.10903
         - https://github.com/PetarV-/GAT
