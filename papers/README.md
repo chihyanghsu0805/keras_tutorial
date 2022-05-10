@@ -11,6 +11,10 @@ ECCV:
 
 ICLR:
 - 2022:
+    - ViTGAN: Training GANs with Vision Transformers
+        -   https://arxiv.org/abs/2107.04589        -   
+    - PolyLoss: A Polynomial Expansion Perspective of Classification Loss Functions
+        -   https://arxiv.org/abs/2204.12511
     - Natural Language Descriptions of Deep Visual Features
         - https://arxiv.org/abs/2201.11114
     -   Pix2Seq: A Language Modeling Framework for Object Detection
