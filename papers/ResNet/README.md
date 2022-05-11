@@ -2,7 +2,7 @@
 
 -   Aggregated Residual Transformations for Deep Neural Networks
     -   2017 CVPR
-    -   https://arxiv.org/pdf/2103.14030
+    -   https://arxiv.org/pdf/1611.05431
 
 - Deep Residual Learning for Image Recognition
     - 2016 CVPR
