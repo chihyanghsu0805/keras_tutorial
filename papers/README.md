@@ -47,6 +47,10 @@ ICCV:
         - https://arxiv.org/pdf/2104.13369.pdf
         - https://explaining-in-style.github.io/
 
+    -   Deformable Convolutional Networks
+        -   https://github.com/msracver/Deformable-ConvNets
+        -   https://arxiv.org/abs/1703.06211
+        -   
 NIPS:
 - 2021:
     - Do Vision Transformers See Like Convolutional Neural Networks?
