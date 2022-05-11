@@ -25,6 +25,10 @@ ICLR:
     -   Pix2Seq: A Language Modeling Framework for Object Detection
         -   https://arxiv.org/pdf/2109.10852.pdf
 
+-   2021:
+    -   Deformable DETR: Deformable Transformers for End-to-End Object Detection
+        -   https://arxiv.org/pdf/2010.04159.pdf
+
 - 2018:
     -   Spectral Normalization for Generative Adversarial Networks
         -   https://arxiv.org/abs/1802.05957
