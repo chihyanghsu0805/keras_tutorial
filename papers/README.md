@@ -11,6 +11,8 @@ ECCV:
 
 ICLR:
 - 2022:
+    -   ViDT: An Efficient and Effective Fully Transformer-based Object Detector
+        -   https://arxiv.org/abs/2110.03921
     -   Learning Strides in Convolutional Neural Networks
         -   https://arxiv.org/abs/2202.01653
         -   https://github.com/google-research/diffstride
