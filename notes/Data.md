@@ -12,13 +12,13 @@
 -   Histogram visualization helps with understanding the feature distribution to determine possible means to normalize the features and label distribution to identify `class imbalance`
 -   Outliers
   -   For both features and labels, check for outliers, missing values, and other mistakes.
-      -   Feature outliers can be `clipped`
-      -   Missing data can be `imputed` by mean or most frequent value
-      -   If too many observations are missing the feature, the feature can be `discarded`
-      -   Check for incorrect entries such as typos
-      -   For labels, check whether all the entries are in expected range
-      -   Check every case for label correctness if possible, otherwise spot check
-      -   For missing label, ask for annotation or discard the observation
+  -   Feature outliers can be `clipped`
+  -   Missing data can be `imputed` by mean or most frequent value
+  -   If too many observations are missing the feature, the feature can be `discarded`
+  -   Check for incorrect entries such as typos
+  -   For labels, check whether all the entries are in expected range
+  -   Check every case for label correctness if possible, otherwise spot check
+  -   For missing label, ask for annotation or discard the observation
 
 -   `Correlations`
 
