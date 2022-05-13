@@ -10,8 +10,6 @@ Including,
 -   Pattern Recognition and Machine Learning, https://www.microsoft.com/en-us/research/uploads/prod/2006/01/Bishop-Pattern-Recognition-and-Machine-Learning-2006.pdf
 <!--- -   Machine Learning A Probabilistic Perspective, https://probml.github.io/pml-book/book0.html --->
 
-# Overview
-
 ` Machine learning is essentially a form of applied statistics with increased emphasis on the use of computers to statistically estimate complicated functions and a decreasd emphasis on proving confidence intervals around these functions.` [1]
 
 ` A computer program is said to learn from experience E with respect to some class of tasks T and performance measure P, if its performance at tasks in T, as measured by P, improves with experience E.` [2]
@@ -21,6 +19,8 @@ Including,
 [1] https://www.deeplearningbook.org/
 
 [2] http://www.cs.cmu.edu/~tom/mlbook.html
+
+# Overview
 
 ## [Problem Framing](./Problem.md)
 ## [Dataset](./Data.md)
