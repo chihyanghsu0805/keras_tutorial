@@ -24,6 +24,15 @@ Including,
 
 ## [Problem Framing](./Problem.md)
 ## [Dataset](./Data.md)
+- Structured / Unstructured
+- EDA
+  - Class imbalance
+  - Outliers
+  - Correlation
+- Feature Engineering
+  - Normalization
+  - Bucketing
+  - Feature Crosses
 ## Algorithm
 -   [Models](./Models.md)
 -   [Generalization](./Generalization.md)
