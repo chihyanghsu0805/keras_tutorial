@@ -13,3 +13,5 @@
 -   After EDA, various approaches can be applied to the features / labels to help with model training
 -   For example, feature normalization allows certain algorithms to converge faster
 -   These approaches are referred to as `feature engineering`
+
+## [Feature Engineering](./feature_engineering.md)
