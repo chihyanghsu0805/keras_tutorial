@@ -7,8 +7,8 @@ A ML model find the optimal parameters by minimizing the prediction and the prov
 
 Two regularization terms are commonly used,
 
--   `L1` (LASSO) pushes weights to zero to encourage `sparsity`
--   `L2` (ridge) pushes weights near zero to encourage `stability`, also known as `weight decay`
+-   `L1` (LASSO) pushes weights to zero to encourage `sparsity`, where the regularization term is the sum of absolute values of the weights
+-   `L2` (ridge) pushes weights near zero to encourage `stability`, also known as `weight decay`, where the regularization term is the sum of squared values of the weights
 -   Elastic nets combines both L1 and L2
 -   L1 and L2 are also used for feature selection
 
