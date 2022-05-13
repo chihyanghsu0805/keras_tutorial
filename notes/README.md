@@ -39,6 +39,6 @@ Including,
 -   [Generalization](./Generalization.md)
 -   [Regularization](./Regularization.md)
 -   [Metrics](./Metrics.md)
--   Loss
+-   [Loss](./Loss.md)
 -   [Optimizers](./Optimizers.md)
 ## [Others](./Others.md)
