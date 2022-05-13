@@ -26,12 +26,13 @@ Including,
 ## [Dataset](./Data.md)
 - Structured / Unstructured
 - EDA
-  - Class imbalance
-  - Outliers
+  - Class imbalance: downsample + upweight / upsample
+  - Outliers: clip, impute, discard
   - Correlation
 - Feature Engineering
-  - Normalization
+  - Normalization: zscore, scale, log
   - Bucketing
+  - One-Hot / Multi-Hot
   - Feature Crosses
 ## Algorithm
 -   [Models](./Models.md)
