@@ -1,7 +1,7 @@
 ### Regularization
 
 A ML model find the optimal parameters by minimizing the prediction and the provided labels. This is referred to as
-`Empirical Risk Minimization`. A common way to address overfitting is to add regularization terms to the optimization problem, or `Structural Risk Minimization`. Regularization prevents overfitting by forcing the parameters to be small hence limits the `parameter ranges to be mostly linear`.
+`Empirical Risk Minimization`. A common way to address overfitting is to add regularization terms to the optimization problem, or `Structural Risk Minimization`. Regularization prevents overfitting by forcing the parameters to be small hence limits the `parameter ranges to be mostly linear`. Regularization can be seen as having a preference over certain models.
 
 ` Statistical Learning Theory`
 
