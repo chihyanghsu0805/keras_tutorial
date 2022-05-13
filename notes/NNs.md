@@ -65,7 +65,7 @@ cost and the need for running statistics limits transfer learning. [1]
 
 NNs have a special regularization technique `Dropout` which randomly drops units during training. It has the effect of evenly distributing the weights throughout the network and `not rely on specific units`. With wider layers, the keep probability should be lower. At test time, dropout is turned off.
 
-- Dropout at test time use all uniots but with the weights going out of unit multiplied by the probability of including unit, weight scaling inference rule.
+- Dropout at test time use all units but with the weights going out of unit multiplied by the probability of including unit, weight scaling inference rule.
 
 `Stochastic Depth` [1] is another regularization technique for NNs. 
 
