@@ -16,13 +16,13 @@ At test time,
   
 However, evidences show that Batch Normalization may induce `severe gradient explosion` at initialization. Batch norm also incurs inter-device synchronization cost and the need for running statistics limits transfer learning [2]. Batch normalization also suffers when the batch size is small and the batch statistics is not representative, e.g. computer vision. 
 
-Other normalization techniques focused on normalizing across channelsm or instances,
+Other normalization techniques focused on normalizing across channels or instances,
 
 - `Instance normalization` [3] computes the stats across spatial dimensions in a single channel and single instance, and is used in style transfer
 - `Layer normalization` [4] computes the stats across spatial dimensions and channels in a single instance
 - `Group normalization`[5] generalizes instance and layer normalization with parameter G, where G = 1 is layer normalization, and G = #C is instance normalization
 
-`Weight normalization`
+- `Weight normalization`
 
 [1] He, K., Zhang, X., Ren, S. and Sun, J., 2016, October. Identity mappings in deep residual networks. In European conference on computer vision (pp. 630-645). Springer, Cham.
 
