@@ -42,6 +42,8 @@ NNs have a special regularization technique `Dropout` which randomly drops units
 
 - Dropout at test time use all units but with the weights going out of unit multiplied by the probability of including unit, weight scaling inference rule.
 
+- Inverted Dropout
+
 `Stochastic Depth` [1] is another regularization technique for NNs. 
 
 L2 regularization in NNs is the `Frobenius Norm` of the weight matrix W and is often referred to as `weight decay` due to the refactoring of terms in gradient descent.
