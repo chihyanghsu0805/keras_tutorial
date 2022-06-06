@@ -8,7 +8,7 @@
 ## `Exploratory Data Analysis (EDA)`
 
 -   EDA refers to collecting information to better understand the data
--   It is typical to collect representative statistics (such as mean, minimum, maximum, etc) for each feature / label and detect and correct outliers and errors
+-   It is typical to collect representative statistics (such as mean, minimum, maximum, etc) for each feature / label to detect and correct outliers and errors
 -   Histogram visualization helps with understanding the feature distribution to determine possible means to normalize the features and label distribution to identify `class imbalance`
 -   Outliers
     -   For both features and labels, check for outliers, missing values, and other mistakes.
