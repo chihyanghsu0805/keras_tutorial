@@ -32,7 +32,7 @@ The shapes of the derivatives are the same with the variables.
 
 ## Vanishing / Exploding Gradients
 
-Another challenge of DNNS is the vanishing / exploding gradients due to the many layers. This can be mitigated with `skip connections`. `Gradient clipping` also helps with exploding gradients. `ReLUs` also help with vanishing gradients.
+Another challenge of DNNS is the vanishing / exploding gradients due to the many layers. This can be mitigated with `skip connections`. `Gradient clipping` also helps with exploding gradients. `ReLUs` also help with vanishing gradients as well as Batch Normalization.
 
 ## [Batch Normalization](./BatchNorm.md)
 
