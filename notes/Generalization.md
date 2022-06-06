@@ -52,3 +52,5 @@ Due to difficulties in data collection, train and dev set may have different dis
 Bayes (Human) Error <- `(Avoidable) Bias` -> Train Error <- `Variance` -> Dev Error <- `Data Mismatch` -> Dev Error
 
 Sometimes, dev error may be lower than train error when the `dev set is easier` than the train set.
+
+Test and dev set should always have the same distribution.
