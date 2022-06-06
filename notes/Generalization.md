@@ -18,7 +18,7 @@ Generally in ML, the chains of assumption follows,
 
 -   Fit train set well ~ human level performance (bigger network, different alogrithm)
 -   Fit dev set well (regularization, bigger train set)
--   Fit test set wll (bigger dev set)
+-   Fit test set well (bigger dev set)
 -   Real World Data (change dev set or cost function)
 
 Build the first system quickly then iterate.
