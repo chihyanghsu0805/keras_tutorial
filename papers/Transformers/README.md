@@ -36,6 +36,10 @@ This folder contains Transformers papers.
   - https://github.com/microsoft/Swin-Transformer
 
 # UNETR
+- Self-Supervised Pre-Training of Swin Transformers for 3D Medical Image Analysis
+  - https://arxiv.org/abs/2111.14791
+  - https://github.com/Project-MONAI/research-contributions/tree/main/SwinUNETR/
+  
 - Swin UNETR: Swin Transformers for Semantic Segmentation of Brain Tumors in MRI Images
   - https://arxiv.org/abs/2201.01266
   - https://github.com/Project-MONAI/research-contributions/tree/master/SwinUNETR
