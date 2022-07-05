@@ -2,6 +2,9 @@
 
 #   Deeplab
 
+-   CMT-DeepLab: Clustering Mask Transformers for Panoptic Segmentation
+    -   https://arxiv.org/pdf/2206.08948.pdf
+    
 -   Rethinking Atrous Convolution for Semantic Image Segmentation
     -   https://arxiv.org/abs/1706.05587
 
