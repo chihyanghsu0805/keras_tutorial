@@ -35,14 +35,14 @@ ICLR:
     - Graph Attention Networks
         - https://arxiv.org/abs/1710.10903
         - https://github.com/PetarV-/GAT
-        
+
 CogSci:
 - 2021:
     - Are Convolutional Neural Networks or Transformers more like human vision?
         - https://arxiv.org/abs/2105.07197
 
 ICCV:
-- 2021:    
+- 2021:
     - Explaining in Style: Training a GAN to explain a classifier in StyleSpace
         - https://arxiv.org/pdf/2104.13369.pdf
         - https://explaining-in-style.github.io/
@@ -90,6 +90,14 @@ CVPR:
     - Learning Deep Features for Discriminative Localization
         - https://openaccess.thecvf.com/content_cvpr_2016/papers/Zhou_Learning_Deep_Features_CVPR_2016_paper.pdf
         - https://github.com/zhoubolei/CAM
+
+- Scaling SGD Batch Size to 32K for ImageNet Training
+    - https://arxiv.org/abs/1708.03888v1?2
+
+- Scaling SGD Batch Size to 32K for ImageNet Training
+    - https://arxiv.org/abs/1708.03888v1?2
+
+
 
 Google AI Blog:
 - Accurate Alpha Matting for Portrait Mode Selfies on Pixel 6

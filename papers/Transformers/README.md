@@ -5,6 +5,7 @@ This folder contains Transformers papers.
   - NIPS 2017
   - https://arxiv.org/abs/1706.03762
   - https://github.com/tensorflow/tensor2tensor
+  - http://nlp.seas.harvard.edu/annotated-transformer/
 
 - ViDT: An Efficient and Effective Fully Transformer-based Object Detector
   - ICLR 2022
@@ -13,7 +14,7 @@ This folder contains Transformers papers.
 # ViT
 - Training Data-Efficient Image Transformers & Distillation Through Attention
   - ICML 2021
-  - https://arxiv.org/abs/2012.12877 
+  - https://arxiv.org/abs/2012.12877
 
 - How to train your ViT? Data, Augmentation, and Regularization in Vision Transformers
   - https://arxiv.org/abs/2106.10270
@@ -55,3 +56,7 @@ This folder contains Transformers papers.
 - UNETR: Transformers for 3D Medical Image Segmentation
   - 2022 WACV
   - https://arxiv.org/abs/2103.10504
+
+# Attention
+
+- - https://lilianweng.github.io/posts/2018-06-24-attention/
