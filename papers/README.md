@@ -11,27 +11,46 @@ ECCV:
 
 ICLR:
 - 2022:
+    -   ViDT: An Efficient and Effective Fully Transformer-based Object Detector
+        -   https://arxiv.org/abs/2110.03921
+    -   Learning Strides in Convolutional Neural Networks
+        -   https://arxiv.org/abs/2202.01653
+        -   https://github.com/google-research/diffstride
+    - ViTGAN: Training GANs with Vision Transformers
+        -   https://arxiv.org/abs/2107.04589        -   
+    - PolyLoss: A Polynomial Expansion Perspective of Classification Loss Functions
+        -   https://arxiv.org/abs/2204.12511
     - Natural Language Descriptions of Deep Visual Features
         - https://arxiv.org/abs/2201.11114
     -   Pix2Seq: A Language Modeling Framework for Object Detection
         -   https://arxiv.org/pdf/2109.10852.pdf
 
+-   2021:
+    -   Deformable DETR: Deformable Transformers for End-to-End Object Detection
+        -   https://arxiv.org/pdf/2010.04159.pdf
+
 - 2018:
+    -   Spectral Normalization for Generative Adversarial Networks
+        -   https://arxiv.org/abs/1802.05957
     - Graph Attention Networks
         - https://arxiv.org/abs/1710.10903
         - https://github.com/PetarV-/GAT
-        
+
 CogSci:
 - 2021:
     - Are Convolutional Neural Networks or Transformers more like human vision?
         - https://arxiv.org/abs/2105.07197
 
 ICCV:
-- 2021:    
+- 2021:
     - Explaining in Style: Training a GAN to explain a classifier in StyleSpace
         - https://arxiv.org/pdf/2104.13369.pdf
         - https://explaining-in-style.github.io/
 
+    -   Deformable Convolutional Networks
+        -   https://github.com/msracver/Deformable-ConvNets
+        -   https://arxiv.org/abs/1703.06211
+        -   
 NIPS:
 - 2021:
     - Do Vision Transformers See Like Convolutional Neural Networks?
@@ -71,6 +90,14 @@ CVPR:
     - Learning Deep Features for Discriminative Localization
         - https://openaccess.thecvf.com/content_cvpr_2016/papers/Zhou_Learning_Deep_Features_CVPR_2016_paper.pdf
         - https://github.com/zhoubolei/CAM
+
+- Scaling SGD Batch Size to 32K for ImageNet Training
+    - https://arxiv.org/abs/1708.03888v1?2
+
+- Scaling SGD Batch Size to 32K for ImageNet Training
+    - https://arxiv.org/abs/1708.03888v1?2
+
+
 
 Google AI Blog:
 - Accurate Alpha Matting for Portrait Mode Selfies on Pixel 6
