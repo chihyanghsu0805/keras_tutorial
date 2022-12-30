@@ -1,0 +1,4 @@
+-   High-Resolution Image Synthesis with Latent Diffusion Models
+    -   https://arxiv.org/abs/2112.10752
+    -   https://github.com/CompVis/stable-diffusion
+    -   https://ommer-lab.com/research/latent-diffusion-models/
