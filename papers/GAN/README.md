@@ -13,6 +13,10 @@
     - 2016 NIPS
     - https://arxiv.org/abs/1606.03498
 
+-   Least Squares Generative Adversarial Networks
+-   -   2017 ICCV
+    -   https://arxiv.org/abs/1611.04076
+
 ## WGAN
 - Wasserstein GAN
     - https://arxiv.org/abs/1701.07875
