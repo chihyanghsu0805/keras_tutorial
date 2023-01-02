@@ -4,30 +4,14 @@ NNs consists of layers which is a collection of units / neurons. Each unit repre
 
 ##  Initialization
 
-Initialization is extremely import for NNs. The initial parameters need to `break symmetry` to ensure each unit learns different functions. Typically biases are set to constants and weights are randomly sampled form a Gaussian or Uniform distribution. The `scale of the distribution` has a large impact as well. If the initial values are too big, gradients may explode. Likewise initial values too small, gradients may vanish. Generally, the wights are initialized to have equal variance. Below are some common initializations,
+Initialization is extremely import for NNs. The initial parameters need to `break symmetry` to ensure each unit learns different functions. Typically biases are set to constants and weights are randomly sampled from a Gaussian or Uniform distribution. The `scale of the distribution` has a large impact as well. If the initial values are too big, gradients may explode. Likewise initial values too small, gradients may vanish. Generally, the weights are initialized to have equal variance. Below are some common initializations,
 
 -   (Xavier) Glorot and Bengio Uniform: U[-1/sqrt(n), 1/sqrt(n)]
 -   Xavier Uniform: U[-sqrt(6)/sqrt(m+n), sqrt(6)/sqrt(m+n)]
 -   Xavier Normal: N(0, sqrt(2/(m + n)))
 -   He for ReLU:  N(0, sqrt(2/n))
 
-##  Activation Functions
-
-NNs introduce non-linearity by applying `non-linear activation` to the units. If all layers have linear activation, then it is the same as one layer with linear activation. Common activation functions are,
-
--   `Rectified Linear Unit (ReLU)`: g(x) = max(0, x), ReLU mitigates vanishing gradients and trains faster but may experience dead ReLU.
--   `Sigmoid`: g(x) = 1 / (1 + e<sup>-x</sup>)
--   `tanh`: g(x) = (e<sup>x</sup> - e<sup>-x</sup>) / (e<sup>x</sup> + e<sup>-x</sup>)
-
-A single layer is represented as A = g(Z), Z = WX + b with the following shapes
-
--   n = number of features / filters
--   m = number of samples
--   X (n<sub>i</sub>, m), note this is different in conventional design matrix
--   W (n<sub>i+1</sub>, n<sub>i</sub>)
--   Z (n<sub>i+1</sub>, m)
--   A (n<sub>i+1</sub>, m)
--   b (n<sub>i</sub>, 1) but `broadcasted` to (n<sub>i</sub>, m)
+##  [Activation Functions](./Activations.md)
 
 ##  Forward / Backward Propagation
 
@@ -48,25 +32,27 @@ The shapes of the derivatives are the same with the variables.
 
 ## Vanishing / Exploding Gradients
 
-Another challenge of DNNS is the vanishing / exploding gradients due to the many layers. This can be mitigated with `skip connections`. `Gradient clipping` also helps with exploding gradients.
+Another challenge of DNNS is the vanishing / exploding gradients due to the many layers. This can be mitigated with `skip connections`. `Gradient clipping` also helps with exploding gradients. `ReLUs` also help with vanishing gradients as well as Batch Normalization.
 
-## Batch Normalization
-
- `Batch Normalization` helps with vanishing / exploding gradients as well as `internal covariate shift` due to random initialization. Bach norm works by making the weights in later layers more robust to chnges in earlier layer. The normalization parameters can be learned so that `batchnorm is not always zero mean and unit variance`. During training, batchnorm is estimated with `exponentially weighted averages`. And at test time, the batchnorm `parameters from training` is used.
- 
-  However, evidences show that Batch Normalization may induce `severe gradient explosion` at initialization. Batch norm also incurs inter-device synchronization
-cost and the need for running statistics limits transfer learning. [1]
-
- There are also variants of normalization, such as `instance normalization`, `layer normalization`, and `group normalization`.
-
-[1] Kolesnikov, A., Beyer, L., Zhai, X., Puigcerver, J., Yung, J., Gelly, S. and Houlsby, N., 2020, August. Big transfer (bit): General visual representation learning. In European conference on computer vision (pp. 491-507). Springer, Cham.
+## [Batch Normalization](./BatchNorm.md)
 
 ##  Regularization
 
 NNs have a special regularization technique `Dropout` which randomly drops units during training. It has the effect of evenly distributing the weights throughout the network and `not rely on specific units`. With wider layers, the keep probability should be lower. At test time, dropout is turned off.
 
+- Dropout at test time use all units but with the weights going out of unit multiplied by the probability of including unit, weight scaling inference rule.
+
+- Inverted Dropout
+
+https://stats.stackexchange.com/questions/205932/dropout-scaling-the-activation-versus-inverting-the-dropout
+
+`Stochastic Depth` [1] is another regularization technique for NNs. 
+
 L2 regularization in NNs is the `Frobenius Norm` of the weight matrix W and is often referred to as `weight decay` due to the refactoring of terms in gradient descent.
+
+[1] Huang, G., Sun, Y., Liu, Z., Sedra, D. and Weinberger, K.Q., 2016, October. Deep networks with stochastic depth. In European conference on computer vision (pp. 646-661). Springer, Cham.
 
 ##  [`Convolution Neural Networks (CNNs)`](./CNNs.md)
 
 ##  [`Recurrent Neural Networks (CNNs)`](./RNNs.md)
+

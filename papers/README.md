@@ -137,6 +137,10 @@
     -   https://arxiv.org/abs/1606.03498
     -   NIPS 2016
 
+-   Least Squares Generative Adversarial Networks
+    -   https://arxiv.org/abs/1611.04076
+    -   ICCV 2017
+
 # WGAN
 -   Wasserstein GAN
     -   https://arxiv.org/abs/1701.07875
@@ -253,13 +257,17 @@
 
 # Model Interpretation
 
+-   Learning Deep Features for Discriminative Localization
+    -   https://arxiv.org/pdf/1512.04150.pdf
+    -   CVPR 2016
+
 -   Deep Inside Convolutional Networks: Visualising Image Classification Models and Saliency Maps
     -   https://arxiv.org/abs/1312.6034
     -   ICLR 2014
 
 -   Visualizing and Understanding Convolutional Networks
     -   https://arxiv.org/abs/1311.2901
-    -   2014 ECCV
+    -   ECCV 2014
 
 -   Understanding Neural Networks Through Deep Visualization
     -   https://arxiv.org/abs/1506.06579
@@ -319,6 +327,10 @@
     -   CVPR 2017
 
 # Resnet
+
+-   Aggregated Residual Transformations for Deep Neural Networks
+    -   CVPR 2017
+    -   https://arxiv.org/pdf/1611.05431
 
 -   Deep Residual Learning for Image Recognition
     -   https://arxiv.org/abs/1512.03385
@@ -427,6 +439,10 @@
     -   NIPS 2017
     -   https://github.com/tensorflow/tensor2tensor
 
+-   ViDT: An Efficient and Effective Fully Transformer-based Object Detector
+    -   2022 ICLR
+    -   https://arxiv.org/abs/2110.03921
+
 # ViT
 
 -   Training Data-Efficient Image Transformers & Distillation Through Attention
@@ -442,6 +458,10 @@
     -   https://github.com/google-research/vision_transformer
 
 # DETR
+
+-   Deformable DETR: Deformable Transformers for End-to-End Object Detection
+  - ICLR 2021
+  - https://arxiv.org/pdf/2010.04159.pdf
 
 -   End-to-End Object Detection with Transformers
     -   https://arxiv.org/abs/2005.12872
@@ -582,11 +602,6 @@
     -   CVPR 2020
     -   https://github.com/tensorflow/tpu/tree/master/models/official/efficientnet
 
--   Learning Deep Features for Discriminative Localization
-    -   https://arxiv.org/abs/1512.04150
-    -   CVPR 2016
-    -   https://github.com/zhoubolei/CAM
-
 Google AI Blog:
 -   Accurate Alpha Matting for Portrait Mode Selfies on Pixel 6
     -   https://ai.googleblog.com/2022/01/accurate-alpha-matting-for-portrait.html
@@ -639,3 +654,35 @@ https://larel-workshop.github.io/papers/
 -   CONQRR: Conversational Query Rewriting for Retrieval with Reinforcement Learning
     -   https://arxiv.org/abs/2112.08558
     -   EMNLP 2022
+
+-   Learning Strides in Convolutional Neural Networks
+    -   https://arxiv.org/abs/2202.01653
+    -   ICLR 2022
+    -   https://github.com/google-research/diffstride
+
+Deformable Convolutional Networks
+    -   https://github.com/msracver/Deformable-ConvNets
+    -   ICCV 2021
+    -   https://arxiv.org/abs/1703.06211
+
+
+-   Deformable DETR: Deformable Transformers for End-to-End Object Detection
+    -   ICLR 2021
+    -   https://arxiv.org/pdf/2010.04159.pdf
+
+
+-   Spectral Normalization for Generative Adversarial Networks
+    -   ICLR 2018
+    -   https://arxiv.org/abs/1802.05957
+
+-   ViTGAN: Training GANs with Vision Transformers
+    -   ICLR 2022
+    -   https://arxiv.org/abs/2107.04589
+
+-   PolyLoss: A Polynomial Expansion Perspective of Classification Loss Functions
+    -   ICLR 2022
+    -   https://arxiv.org/abs/2204.12511
+
+-   Scaling SGD Batch Size to 32K for ImageNet Training
+    -   CVPR 2016
+    -   https://arxiv.org/abs/1708.03888v1?2

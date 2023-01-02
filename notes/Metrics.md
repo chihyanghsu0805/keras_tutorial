@@ -1,0 +1,5 @@
+### Metrics
+
+Metrics are used to compare model performance. It is important to choose a metric that truly represents the objective of the model. Choose a single metric to evaluate but others can also be collected. For classification problems, it is typical to use `accuracy: (TP + TN) / (TP + FP + TN + FN)`. For class imbalanced problems, `precision: TP / (TP + FP)` and `recall: TP / (TP + FN)` may be more informative. Increasing the threshold leads to less False Positives and result in higher precision, while decreasing the threshold leads to less False Negatives with higher Recall. `F1 / Dice Score: 2 x P x R / (P + R)` is the harmonic mean of precision and recall. It is also commonly used in image segmentation along with `Hausdorff Distance`. `Jaccard Index / Intersection over Union (IoU)` is used for object detection and categorical features.
+
+Besides single value metrics, `Receiver Operating Characteristic (ROC) Curve` assess model performance at different threshold values and `Area Under the Curve (AUC)` quantifies the curve. `Calibration Plot` visualizes the performance with different labels to detect `Bucketed Bias`.
