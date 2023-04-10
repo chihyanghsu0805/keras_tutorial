@@ -50,6 +50,11 @@
 
 ## Computer Vision
 
+-   Segment Anything
+    -   https://github.com/facebookresearch/segment-anything
+    -   https://segment-anything.com/
+    -   https://arxiv.org/pdf/2304.02643.pdf
+
 -   Emerging Properties in Self-Supervised Vision Transformers
     -   https://arxiv.org/abs/2104.14294
     -   ICCV 2021
