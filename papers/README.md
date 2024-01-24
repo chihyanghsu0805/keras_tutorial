@@ -1,6 +1,7 @@
 # Papers
 
 [Active Learning](./README.md#active-learning) </br>
+[Contrastive Learning](./contrastive_learning/)
 [Computer Vision](./README.md#computer-vision) </br>
 [DCGAN](./README.md#dcgan) </br>
 [Deeplab](./README.md#deeplab) </br>
@@ -62,18 +63,6 @@
     -   https://github.com/facebookresearch/suncet
     -   https://ai.facebook.com/blog/dino-paws-computer-vision-with-self-supervised-transformers-and-10x-more-efficient-training/
 
-## SimCLR
-
--   A Simple Framework for Contrastive Learning of Visual Representations
-    -   https://arxiv.org/abs/2002.05709
-    -   ICML 2020
-    -   https://github.com/google-research/simclr
-    -   https://ai.googleblog.com/2020/04/advancing-self-supervised-and-semi.html
-
--   Big Self-Supervised Models are Strong Semi-Supervised Learners
-    -   https://arxiv.org/abs/2006.10029
-    -   NIPS 2020
-    -   https://github.com/google-research/simclr
 
 # Dialogue
 
